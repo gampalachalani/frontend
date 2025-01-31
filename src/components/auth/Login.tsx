@@ -13,9 +13,13 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login({ userEmail, password });
+      const response = await login({ userEmail, password });
       setError(null);
-      navigate('/dashboard');
+      console.log(response);
+      sessionStorage.setItem('token', response);
+      if(response){
+        navigate('/home');
+      }
     } catch (err) {
       setError(err as string);
     }

@@ -25,8 +25,16 @@ export const login = async (credentials: { userEmail: string; password: string }
     try {
       const response = await axios.post(`${API_URL}/signing`, credentials);
       const token = response.data.token;
-      localStorage.setItem('token', token);
-      return token;
+      const userEmail = response.data.userEmail;
+      const firstName = response.data.firstName;
+      const userId = response.data.userId;
+      const role = response.data.role;
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('userEmail', userEmail);
+      sessionStorage.setItem('firstName', firstName);
+      sessionStorage.setItem('userId', userId);
+      sessionStorage.setItem('role', role);
+      return response.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorData = error.response.data as ErrorResponse;
@@ -39,5 +47,6 @@ export const login = async (credentials: { userEmail: string; password: string }
   
 
 export const logout = (): void => {
-  localStorage.removeItem('token'); 
+  sessionStorage.removeItem('token'); 
+  window.location.href = '/login';
 };

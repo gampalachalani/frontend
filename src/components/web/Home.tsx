@@ -8,10 +8,10 @@ const Home : React.FC = () => {
         <section className="main">
           <h1>Welcome to SeedLink</h1>
           <div className="buttons">
-               <a href="/entrepreneurform">
+               <a href="/entpForms">
                <button className="btn btn_1">Join as an Entrepreneur</button>
                </a>
-               <a href="/investorform">
+               <a href="/intForm">
                <button className="btn btn_2">Join as an Investor</button>
                </a>
           </div>

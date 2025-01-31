@@ -16,10 +16,9 @@ const Signup: React.FC = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register({ userEmail, firstName, lastName, password });
-      setSuccess(true);
-      setError(null);
-      if(success){
+      const response = await register({ userEmail, firstName, lastName, password });
+
+      if(response){
         navigate('/login');
       }
     } catch (err) {
