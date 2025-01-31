@@ -37,3 +37,18 @@ export const submitInvestorForm = async (
       alert("Failed to submit investor data.");
     }
 };
+
+export const getAllInvesters = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAllInvestors`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`, 
+      },
+    });
+    if (!response.ok) throw new Error("Failed to fetch invester");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching enterprises:", error);
+    return [];
+  }
+};

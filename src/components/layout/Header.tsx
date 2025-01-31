@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         </div>
       <div className="left-links">
         <a className="nav-link" href="/home">Home</a>
-        <a className="nav-link" href="/entpForms">Entrepreneurs</a>
+        <a className="nav-link" href="/enterprise">Entrepreneurs</a>
         <a className="nav-link" href="/investors">Investors</a>
       </div>
 

@@ -1,4 +1,5 @@
 export interface EnterpriseFormData {
+    enterpriseId: string;
     userId: string;
     enterpriseName: string;
     enterpriseEmail: string;
@@ -9,5 +10,7 @@ export interface EnterpriseFormData {
     city: string;
     telNumber: string;
     webUrl: string;
-    imageFile: File | null;
+    imageName: string;
+    imageFile: File | null; // Base64 encoded string
+    contentType: string;
 }
