@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './Signup.css';
-import cmplogo from '../components/assets/logo1.png';
-import { register } from '../services/AuthService';
+import "../styles/signup.css";
+import cmplogo from '../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
+import { register } from '../../services/AuthService';
 
 const Signup: React.FC = () => {
   const [userEmail, setUserEmail] = useState('');
