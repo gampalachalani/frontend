@@ -2,8 +2,12 @@ import React from 'react';
 import '../styles/Header.css';
 import logo from '../assets/logo1.png';
 import search from '../assets/search.png'
+import { logout } from '../../services/AuthService';
 
 const Header: React.FC = () => {
+  const tocken = sessionStorage.getItem('token');
+  const firstName = sessionStorage.getItem('firstName');
+  //console.log(tocken);
   return (
     <nav className="navbar">
       <div className="container">
@@ -14,7 +18,7 @@ const Header: React.FC = () => {
         </div>
       <div className="left-links">
         <a className="nav-link" href="/home">Home</a>
-        <a className="nav-link" href="/entrepreneurs">Entrepreneurs</a>
+        <a className="nav-link" href="/entpForms">Entrepreneurs</a>
         <a className="nav-link" href="/investors">Investors</a>
       </div>
 
@@ -25,8 +29,8 @@ const Header: React.FC = () => {
 
         <div className="right-links">
         <a className="nav-link" href="/funding">Funds</a>
-        <a className="nav-link" href="/login">Sign In</a>
-        <a className="nav-link" href="/signup">Sign Up</a>
+        {tocken ? <button className="nav-link" onClick={logout}>Logout</button> : <a className="nav-link" href="/login">Sign In</a>}
+        <div className="text-white d-flex">{firstName}</div>
       </div>
     
     </div>
@@ -35,8 +39,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-
-
-
-
-
