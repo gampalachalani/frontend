@@ -9,6 +9,7 @@ const EnterpriseForm: React.FC = () => {
 
   const [formData, setFormData] = useState<EnterpriseFormData>({
     userId: userId || "",
+    enterpriseId: "",
     enterpriseName: "",
     enterpriseEmail: "",
     registerNumber: "",
@@ -19,6 +20,8 @@ const EnterpriseForm: React.FC = () => {
     telNumber: "",
     webUrl: "",
     imageFile: null as File | null,
+    imageName: "",
+    contentType: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

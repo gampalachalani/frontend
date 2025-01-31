@@ -8,4 +8,7 @@ export interface InvestorFormData {
     address: string;
     telNumber: string;
     imageFile: File | null;
+    investorId: string;
+    imageName: string;
+    contentType: string;
 }

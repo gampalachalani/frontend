@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Home from './components/web/Home';
 import Footer from './components/layout/Footer';
-import Entrepreneurs from './components/web/Entrepreneurs';
+import Enterprise from './components/web/Enterprise';
 import Investors from './components/web/Investors';
 import Login from './components/auth/Login';
 import './App.css'
@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/entrepreneurs" element={<Entrepreneurs />} />
+        <Route path="/enterprise" element={<Enterprise />} />
         <Route path="/investors" element={<Investors />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

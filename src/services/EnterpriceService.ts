@@ -44,3 +44,19 @@ export const submitEnterpriseForm = async (
     alert("Failed to add enterprise details.");
   }
 };
+
+
+export const getAllEnterprises = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAll`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`, 
+      },
+    });
+    if (!response.ok) throw new Error("Failed to fetch enterprises");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching enterprises:", error);
+    return [];
+  }
+};
