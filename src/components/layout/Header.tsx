@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/Header.css';
 import logo from '../assets/logo1.png';
 import search from '../assets/search.png'
 import { logout } from '../../services/AuthService';
 
 const Header: React.FC = () => {
-  const tocken = sessionStorage.getItem('token');
-  const firstName = sessionStorage.getItem('firstName');
+  const [token, setTooken] = React.useState<string | null>(null);
+  const [firstName, setFirstName] = React.useState<string | null>(null);  
+
+  useEffect(() => {
+    const tocken = sessionStorage.getItem('token');
+    const fName = sessionStorage.getItem('firstName');
+    setTooken(tocken);
+    setFirstName(fName);
+    //console.log(tocken);
+    //console.log(firstName);
+  }, []);
   //console.log(tocken);
   return (
     <nav className="navbar">
@@ -29,7 +38,7 @@ const Header: React.FC = () => {
 
         <div className="right-links">
         <a className="nav-link" href="/funding">Funds</a>
-        {tocken ? <button className="nav-link" onClick={logout}>Logout</button> : <a className="nav-link" href="/login">Sign In</a>}
+        {token ? <button className="nav-link" onClick={logout}>Logout</button> : <a className="nav-link" href="/login">Sign In</a>}
         <div className="text-white d-flex">{firstName}</div>
       </div>
     

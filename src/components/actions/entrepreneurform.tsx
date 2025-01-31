@@ -1,193 +1,107 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
+import { submitEnterpriseForm } from "../../services/EnterpriceService";
 
-const Entrepreneurform = () => {
-    const userId = useParams<{ userId: string }>().userId;
+const EnterpriseForm: React.FC = () => {
+  const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    userId:"",
-    investorName: "",
-    investorJob: "",
-    investorInterest: "",
-    otherDetails: "",
-    budgetLimit: "",
+
+  const [formData, setFormData] = useState<EnterpriseFormData>({
+    userId: userId || "",
+    enterpriseName: "",
+    enterpriseEmail: "",
+    registerNumber: "",
+    enterpriseType: "",
+    startingDate: "",
     address: "",
+    city: "",
     telNumber: "",
+    webUrl: "",
     imageFile: null as File | null,
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData({
-        ...formData,
-        imageFile: e.target.files[0],
-      });
+      setFormData((prev) => ({ ...prev, imageFile: e.target.files![0] }));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const data = new FormData();
-    data.append("investment", JSON.stringify({
-      userId: userId,
-      investorName: formData.investorName,
-      investorJob: formData.investorJob,
-      investorInterest: formData.investorInterest,
-      otherDetails: formData.otherDetails,
-      budgetLimit: formData.budgetLimit,
-      address: formData.address,
-      telNumber: formData.telNumber,
-    }));
-
-    if (formData.imageFile) {
-      data.append("imageFile", formData.imageFile);
+    const userId = sessionStorage.getItem("userId");
+    if (userId) {
+      await submitEnterpriseForm(formData, userId, navigate);
+    } else {
+      alert("User ID is missing!");
     }
+  };
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/investment/add",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      navigate("/login");
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error submitting data", error);
-      alert("Failed to submit investor data.");
-    }
-};
-
-    return (
+  return (
     <div className="container my-5">
-        <h2 className="text-center mb-4">Add Investor Details</h2>
-        <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
-          <div className="mb-3">
-            <label htmlFor="investorName" className="form-label">
-              Investor Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="investorName"
-              name="investorName"
-              value={formData.investorName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="investorJob" className="form-label">
-              Investor Job
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="investorJob"
-              name="investorJob"
-              value={formData.investorJob}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="investorInterest" className="form-label">
-              Investor Interest
-            </label>
-            <input
-              className="form-control"
-              id="investorInterest"
-              name="investorInterest"
-              value={formData.investorInterest}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="otherDetails" className="form-label">
-              Other Details
-            </label>
-            <input
-              className="form-control"
-              id="otherDetails"
-              name="otherDetails"
-              value={formData.otherDetails}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="budgetLimit" className="form-label">
-              Budget Limit
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="budgetLimit"
-              name="budgetLimit"
-              value={formData.budgetLimit}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="address" className="form-label">
-              Address
-            </label>
-            <input
-              className="form-control"
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="telNumber" className="form-label">
-              Telephone Number
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="telNumber"
-              name="telNumber"
-              value={formData.telNumber}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="imageFile" className="form-label">
-              Upload Image
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="imageFile"
-              onChange={handleFileChange}
-              required
-            />
-          </div>
-          <div className="text-center">
-            <button type="submit" className="btn btn-success w-100">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+      <h2 className="text-center mb-4">Add Enterprise Details</h2>
+      <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
+        <div className="mb-3">
+          <label className="form-label">Enterprise Name</label>
+          <input type="text" className="form-control" name="enterpriseName" value={formData.enterpriseName} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Enterprise Email</label>
+          <input type="email" className="form-control" name="enterpriseEmail" value={formData.enterpriseEmail} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Register Number</label>
+          <input type="text" className="form-control" name="registerNumber" value={formData.registerNumber} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Enterprise Type</label>
+          <input type="text" className="form-control" name="enterpriseType" value={formData.enterpriseType} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Starting Date</label>
+          <input type="date" className="form-control" name="startingDate" value={formData.startingDate} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Address</label>
+          <input type="text" className="form-control" name="address" value={formData.address} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">City</label>
+          <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Telephone Number</label>
+          <input type="text" className="form-control" name="telNumber" value={formData.telNumber} onChange={handleChange} required />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Website URL</label>
+          <input type="text" className="form-control" name="webUrl" value={formData.webUrl} onChange={handleChange} />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Upload Image</label>
+          <input type="file" className="form-control" onChange={handleFileChange} required />
+        </div>
+
+        <div className="text-center">
+          <button type="submit" className="btn btn-success w-100">Submit</button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
-export default Entrepreneurform;
+export default EnterpriseForm;
