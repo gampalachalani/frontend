@@ -10,3 +10,7 @@
     color: #333;
     line-height: 1.6;
   }
+  .nav-link.active {
+    font-weight: bold;
+  }
+  

@@ -1,4 +1,5 @@
 export interface InvestorFormData {
+    investmentId: string;
     userId: string;
     investorName: string;
     investorJob: string;

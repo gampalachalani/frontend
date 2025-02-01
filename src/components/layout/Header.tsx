@@ -3,6 +3,7 @@ import '../styles/Header.css';
 import logo from '../assets/logo1.png';
 import search from '../assets/search.png'
 import { logout } from '../../services/AuthService';
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [token, setTooken] = React.useState<string | null>(null);
@@ -25,11 +26,17 @@ const Header: React.FC = () => {
             <img src={logo} alt="Company Logo" />
           </a>
         </div>
-      <div className="left-links">
-        <a className="nav-link" href="/home">Home</a>
-        <a className="nav-link" href="/enterprise">Entrepreneurs</a>
-        <a className="nav-link" href="/investors">Investors</a>
-      </div>
+        <div className="left-links">
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/home">
+            Home
+          </NavLink>
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/enterprise">
+            Entrepreneurs
+          </NavLink>
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} to="/investors">
+            Investors
+          </NavLink>
+        </div>
 
         <div className="search-bar">
           <img src={search} alt="Search" />
