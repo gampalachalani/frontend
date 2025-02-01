@@ -12,6 +12,8 @@ import Entrepreneurform from './components/actions/Entrepreneurform';
 import Investorform from './components/actions/Investorform';
 import EntpProfile from './components/web/user/EntpProfile';
 import InvsProfile from './components/web/user/InvsProfile';
+import FundingForm from './components/actions/FundingForm';
+import FundList from './components/web/FundList';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,8 @@ const App: React.FC = () => {
         <Route path="/intForm" element={<Investorform />} />
         <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
         <Route path="/invsProfile/:investorId" element={<InvsProfile />} />
+        <Route path="/funding" element={<FundingForm />} />
+        <Route path="/fundList" element={<FundList />} />
       </Routes>
       <Footer />
     </Router>
