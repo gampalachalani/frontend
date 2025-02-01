@@ -11,6 +11,7 @@ import Signup from './components/auth/Signup';
 import Entrepreneurform from './components/actions/Entrepreneurform';
 import Investorform from './components/actions/Investorform';
 import EntpProfile from './components/web/user/EntpProfile';
+import InvsProfile from './components/web/user/InvsProfile';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Route path="/entpForms" element={<Entrepreneurform />} />
         <Route path="/intForm" element={<Investorform />} />
         <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
+        <Route path="/invsProfile/:investorId" element={<InvsProfile />} />
       </Routes>
       <Footer />
     </Router>

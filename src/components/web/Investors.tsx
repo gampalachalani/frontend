@@ -21,7 +21,7 @@ const InvestorList: React.FC = () => {
       <div className="row">
         {investors.length > 0 ? (
           investors.map((investor) => (
-            <div key={investor.investorId} className="col-md-4">
+            <div key={investor.investmentId} className="col-md-4">
               <div className="card mb-3 shadow">
                 {investor.imageFile && (
                   <img
@@ -39,6 +39,7 @@ const InvestorList: React.FC = () => {
                   <p className="card-text">
                     <strong>Company:</strong> {investor.investorInterest}
                   </p>
+                  <a href={`/invsProfile/${investor.investmentId}`} className="btn btn-primary">View Profile</a>
                 </div>
               </div>
             </div>

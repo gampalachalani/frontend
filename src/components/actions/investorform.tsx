@@ -32,7 +32,15 @@ const Investorform: React.FC = () => {
     e.preventDefault();
     const userId = sessionStorage.getItem("userId");
     if (userId) {
-      await submitInvestorForm({ ...formData, userId }, userId, navigate);
+      const updatedFormData = {
+        ...formData,
+        userId,
+        investmentId: "", // Add appropriate value
+        investorId: "", // Add appropriate value
+        imageName: formData.imageFile ? formData.imageFile.name : "",
+        contentType: formData.imageFile ? formData.imageFile.type : ""
+      };
+      await submitInvestorForm(updatedFormData, userId, navigate);
     } else {
       console.error("User ID is null");
     }

@@ -48,3 +48,14 @@ export const getAllInvesters = async () => {
     return [];
   }
 };
+
+export const getInvestorById = async (investorId: string) => {
+  try {
+    const response = await fetch(`${API_URL}/getInvestmentByInvestmentId/${investorId}`);
+    if (!response.ok) throw new Error("Failed to fetch investor");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching investors:", error);
+    return [];
+  }
+};
