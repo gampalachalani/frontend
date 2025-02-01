@@ -52,11 +52,8 @@ const EnterpriseList: React.FC = () => {
                   <p className="card-text">
                     <strong>Email:</strong> {enterprise.enterpriseEmail}
                   </p>
-                  {enterprise.webUrl && (
-                    <a href={enterprise.webUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                      Visit Website
-                    </a>
-                  )}
+                    <a href={enterprise.webUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer"> Visit Website </a>
+                    <a href={`/entpProfile/${enterprise.enterpriseId}`} className="btn btn-outline-dark mx-2" rel="noopener noreferrer"> View Profile </a>
                 </div>
               </div>
             </div>
