@@ -48,12 +48,19 @@ export const submitEnterpriseForm = async (
 
 export const getAllEnterprises = async () => {
   try {
-    const response = await fetch(`${API_URL}/getAll`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`, 
-      },
-    });
+    const response = await fetch(`${API_URL}/getAll`);
     if (!response.ok) throw new Error("Failed to fetch enterprises");
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching enterprises:", error);
+    return [];
+  }
+};
+
+export const getEnterpriseById = async (enterpriseId: string) => {
+  try {
+    const response = await fetch(`${API_URL}/getEnterpriseById/${enterpriseId}`);
+    if (!response.ok) throw new Error("Failed to fetch enterprise");
     return await response.json();
   } catch (error) {
     console.error("Error fetching enterprises:", error);
