@@ -3,6 +3,8 @@ import "../styles/signup.css";
 import cmplogo from '../assets/logo1.png';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../services/AuthService';
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
 
 const Signup: React.FC = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -28,6 +30,8 @@ const Signup: React.FC = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className='wrapper'>
       <div className='signup-container'>
       <div className='cmp-logo'>
@@ -86,6 +90,8 @@ const Signup: React.FC = () => {
       </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -37,12 +37,40 @@ const EnterpriseForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const userId = sessionStorage.getItem("userId");
-    if (userId) {
-      await submitEnterpriseForm(formData, userId, navigate);
-    } else {
-      alert("User ID is missing!");
+    if (validate()) {
+      const userId = sessionStorage.getItem("userId");
+      if (userId) {
+        await submitEnterpriseForm(formData, userId, navigate);
+      } else {
+        alert("User ID is missing!");
+      }
     }
+  };
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const validate = () => {
+    let tempErrors: { [key: string]: string } = {};
+    if (!formData.enterpriseName) tempErrors.enterpriseName = "Enterprise Name is required";
+    if (!formData.enterpriseEmail) {
+      tempErrors.enterpriseEmail = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.enterpriseEmail)) {
+      tempErrors.enterpriseEmail = "Invalid email format";
+    }
+    if (!formData.registerNumber) tempErrors.registerNumber = "Register Number is required";
+    if (!formData.enterpriseType) tempErrors.enterpriseType = "Enterprise Type is required";
+    if (!formData.startingDate) tempErrors.startingDate = "Starting Date is required";
+    if (!formData.address) tempErrors.address = "Address is required";
+    if (!formData.city) tempErrors.city = "City is required";
+    if (!formData.telNumber) {
+      tempErrors.telNumber = "Telephone Number is required";
+    } else if (!/^0\d{9}$/.test(formData.telNumber)) {
+      tempErrors.telNumber = "Invalid telephone number. Must be 10 digits starting with 0";
+    }
+    if (!formData.webUrl) tempErrors.webUrl = "Website URL is required";
+    if (!formData.imageFile) tempErrors.imageFile = "Image upload is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
   };
 
   return (
@@ -52,6 +80,7 @@ const EnterpriseForm: React.FC = () => {
         <div className="mb-3">
           <label className="form-label">Enterprise Name</label>
           <input type="text" className="form-control" name="enterpriseName" value={formData.enterpriseName} onChange={handleChange} required />
+          {errors.enterpriseName && <div className="text-danger">{errors.enterpriseName}</div>}
         </div>
 
         <div className="mb-3">

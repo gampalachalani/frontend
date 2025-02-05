@@ -29,7 +29,7 @@ const EnterpriseList: React.FC = () => {
     <Header/>
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="text-center">Enterprise List</h2>
+        <h2 className="text-center">Entreprenuers</h2>
         <div className="input-group" style={{ maxWidth: "400px" }}>
           <input
             type="text"
