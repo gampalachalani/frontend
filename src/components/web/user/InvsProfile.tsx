@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { InvestorFormData } from "../../../interfaces/InvestorFormData";
 import { getInvestorById } from "../../../services/InvesterService";
+import Header from "../../layout/Header";
 
 const InvsProfile: React.FC = () => {
   const [investor, setInvestor] = useState<InvestorFormData | null>(null);
@@ -25,6 +26,8 @@ const InvsProfile: React.FC = () => {
 
   return (
     <div className="main-content">
+      
+      <Header />
       <div
         className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
         style={{

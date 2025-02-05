@@ -61,7 +61,7 @@ const Header: React.FC = () => {
             }
             to="/funding"
           >
-            Funds
+            Fund Request
           </NavLink>
           <NavLink
             className={({ isActive }) =>
