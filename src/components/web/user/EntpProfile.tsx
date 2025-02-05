@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { EnterpriseFormData } from "../../../interfaces/EnterpriseFormData";
 import { getEnterpriseById } from "../../../services/EnterpriceService";
 import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
 
 const EntpProfile: React.FC = () => {
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
@@ -101,6 +102,7 @@ const EntpProfile: React.FC = () => {
           </div>
         </div>
       </div>
+    <Footer />
     </div>
   );
 };

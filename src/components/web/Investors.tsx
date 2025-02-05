@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InvestorFormData } from "../../interfaces/InvestorFormData";
 import { getAllInvesters } from "../../services/InvesterService";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const InvestorList: React.FC = () => {
   const [investors, setInvestors] = useState<InvestorFormData[]>([]);
@@ -27,6 +29,8 @@ const InvestorList: React.FC = () => {
   }, [searchTerm, investors]);
 
   return (
+    <>
+    <Header />
     <div className="container mt-4">
       <div className="d-flex justify-content-between">
         <h2 className="mb-4 text-center">Investor List</h2>
@@ -65,9 +69,6 @@ const InvestorList: React.FC = () => {
                 <div className="card-body">
                   <h5 className="card-title">{investor.investorName}</h5>
                   <p className="card-text">
-                    <strong>Contact:</strong> {investor.telNumber}
-                  </p>
-                  <p className="card-text">
                     <strong>Job:</strong> {investor.investorJob}
                   </p>
                   <p className="card-text">
@@ -83,6 +84,8 @@ const InvestorList: React.FC = () => {
         )}
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

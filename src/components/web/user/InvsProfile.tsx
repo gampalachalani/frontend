@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { InvestorFormData } from "../../../interfaces/InvestorFormData";
 import { getInvestorById } from "../../../services/InvesterService";
 import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
 
 const InvsProfile: React.FC = () => {
   const [investor, setInvestor] = useState<InvestorFormData | null>(null);
@@ -100,6 +101,7 @@ const InvsProfile: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

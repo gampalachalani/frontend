@@ -1,9 +1,12 @@
 import React from 'react';
 import "../styles/Home.css";
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
 
 const Home : React.FC = () => {
   return (
     <>
+       <Header />
       <main className="home-page">
         <section className="main">
           <h1>Welcome to SeedLink</h1>
@@ -30,6 +33,7 @@ const Home : React.FC = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 };

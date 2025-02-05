@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getAllFunds } from '../../services/Funding';
 import { Fund } from '../../interfaces/Fund';
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
 
 const FundList: React.FC = () => {
   const [funds, setFunds] = useState<Fund[]>([]);
@@ -43,6 +45,8 @@ const FundList: React.FC = () => {
   }
 
   return (
+    <>
+    <Header />
     <div>
       <div className="container">
       <div className="row my-5">
@@ -92,7 +96,9 @@ const FundList: React.FC = () => {
       </div>
     )}
     </div>
-  );
+    <Footer />
+    </>
+      );
 };
 
 export default FundList;
