@@ -78,3 +78,9 @@ export const getUserCount = async () => {
     return 0;
   }
 };
+
+export const deleteUser = async (id: string) => {
+  const response = await axios.delete(`${API_URL}/delete/${id}`);
+  return response.data;
+};
+

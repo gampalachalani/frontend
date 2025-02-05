@@ -71,3 +71,8 @@ export const getInvestorCount = async () => {
     return 0;
   }
 };
+
+export const deleteInvester = async (id: string) => {
+  const response = await axios.delete(`${API_URL}/deleteInvestment/${id}`);
+  return response.data;
+};

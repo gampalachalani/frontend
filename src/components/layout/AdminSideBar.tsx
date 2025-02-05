@@ -43,8 +43,11 @@ const AdminSideBar: React.FC = () => {
                 <a className="nav-link" href="/enterprises">
                   Enterprises
                 </a>
-                <a className="nav-link" href="/enterprises">
+                <a className="nav-link" href="/investers">
                   Investers
+                </a>
+                <a className="nav-link" href="/users">
+                  Users
                 </a>
               </nav>
             </div>

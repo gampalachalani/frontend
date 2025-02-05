@@ -14,6 +14,8 @@ import FundingForm from "./components/actions/FundingForm";
 import FundList from "./components/web/FundList";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import Enterprises from "./components/admin/Enterprices";
+import Investers from "./components/admin/Investors";
+import Users from "./components/admin/Users";
 
 const App: React.FC = () => {
   return (
@@ -33,6 +35,8 @@ const App: React.FC = () => {
           <Route path="/fundList" element={<FundList />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/enterprises" element={<Enterprises />} />
+          <Route path="/investers" element={<Investers />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
     </div>
