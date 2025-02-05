@@ -33,7 +33,7 @@ const InvestorList: React.FC = () => {
     <Header />
     <div className="container mt-4">
       <div className="d-flex justify-content-between">
-        <h2 className="mb-4 text-center">Investor List</h2>
+        <h2 className="mb-4 text-center">Investors</h2>
         <div className="input-group mb-3" style={{ maxWidth: "400px" }}>
           <input 
             type="text" 

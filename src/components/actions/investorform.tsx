@@ -46,6 +46,31 @@ const Investorform: React.FC = () => {
     }
   };
 
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const validate = () => {
+    let tempErrors: { [key: string]: string } = {};
+    if (!formData.investorName) tempErrors.investorName = "Investor Name is required";
+    if (!formData.investorJob) tempErrors.investorJob = "Investor Job is required";
+    if (!formData.investorInterest) tempErrors.investorInterest = "Investor Interest is required";
+    if (!formData.budgetLimit) tempErrors.budgetLimit = "Budget Limit is required";
+    if (!formData.address) tempErrors.address = "Address is required";
+    if (!formData.telNumber) {
+      tempErrors.telNumber = "Telephone Number is required";
+    } else if (!/^0\d{9}$/.test(formData.telNumber)) {
+      tempErrors.telNumber = "Telephone number must start with 0 and be exactly 10 digits";
+    }
+    if (!formData.imageFile) {
+      tempErrors.imageFile = "Image upload is required";
+    } else if (!formData.imageFile.type.startsWith("image/")) {
+      tempErrors.imageFile = "Only image files are allowed";
+    }
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+
   return (
     <div className="container my-5">
       <h2 className="text-center mb-4">Add Investor Details</h2>

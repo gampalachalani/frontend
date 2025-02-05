@@ -3,6 +3,8 @@ import "../styles/Login.css";
 import cmplogo from "../assets/logo1.png";
 import { login } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const Login: React.FC = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -24,6 +26,8 @@ const Login: React.FC = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="Login">
       <div className="form-container">
         <div className="cmp-logo">
@@ -74,6 +78,8 @@ const Login: React.FC = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
