@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getAllEnterprises } from "../../services/EnterpriceService";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const EnterpriseList: React.FC = () => {
   const [enterprises, setEnterprises] = useState<EnterpriseFormData[]>([]);
@@ -23,6 +25,8 @@ const EnterpriseList: React.FC = () => {
   );
 
   return (
+    <>
+    <Header/>
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="text-center">Enterprise List</h2>
@@ -60,19 +64,7 @@ const EnterpriseList: React.FC = () => {
                     <strong>Type:</strong> {enterprise.enterpriseType}
                   </p>
                   <p className="card-text">
-                    <strong>Register #:</strong> {enterprise.registerNumber}
-                  </p>
-                  <p className="card-text">
-                    <strong>Founded:</strong> {enterprise.startingDate}
-                  </p>
-                  <p className="card-text">
                     <strong>Address:</strong> {enterprise.address}, {enterprise.city}
-                  </p>
-                  <p className="card-text">
-                    <strong>Contact:</strong> {enterprise.telNumber}
-                  </p>
-                  <p className="card-text">
-                    <strong>Email:</strong> {enterprise.enterpriseEmail}
                   </p>
                   <a href={enterprise.webUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     Visit Website
@@ -89,6 +81,8 @@ const EnterpriseList: React.FC = () => {
         )}
       </div>
     </div>
+     <Footer />
+     </>
   );
 };
 
