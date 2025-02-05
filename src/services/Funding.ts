@@ -26,10 +26,17 @@ export const getAllFunds = async () => {
   try {
     const response = await fetch(`${API_URL}/getAll`);
     if (!response.ok) throw new Error("Failed to fetch enterprises");
-    return await response.json();
+    
+    const funds = await response.json();
+    
+    // Filter only the funds with the status "published"
+    const publishedFunds = funds.filter((fund: { status: string }) => fund.status === 'published');
+    
+    return publishedFunds;
   } catch (error) {
     console.error("Error fetching enterprises:", error);
     return [];
   }
 };
+
   

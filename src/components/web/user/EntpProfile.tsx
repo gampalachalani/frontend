@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { EnterpriseFormData } from "../../../interfaces/EnterpriseFormData";
 import { getEnterpriseById } from "../../../services/EnterpriceService";
+import Header from "../../layout/Header";
 
 const EntpProfile: React.FC = () => {
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
@@ -25,6 +26,8 @@ const EntpProfile: React.FC = () => {
 
   return (
     <div className="main-content">
+      
+      <Header />
       <div
         className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
         style={{
