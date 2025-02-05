@@ -1,20 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/layout/Header";
 import Home from "./components/web/Home";
-import Footer from "./components/layout/Footer";
 import Enterprise from "./components/web/Enterprise";
 import Investors from "./components/web/Investors";
 import Login from "./components/auth/Login";
-import "./App.css";
 import Signup from "./components/auth/Signup";
-import Entrepreneurform from "./components/actions/Entrepreneurform";
-import Investorform from "./components/actions/Investorform";
+import Entrepreneurform from "./components/actions/Entreform";
+import Investorform from "./components/actions/Invesform";
 import EntpProfile from "./components/web/user/EntpProfile";
 import InvsProfile from "./components/web/user/InvsProfile";
 import FundingForm from "./components/actions/FundingForm";
 import FundList from "./components/web/FundList";
 import AdminDashboard from "./components/admin/AdminDashboard";
+import "./App.css";
 
 const App: React.FC = () => {
   return (

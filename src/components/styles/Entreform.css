@@ -1,0 +1,59 @@
+.entreform-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(2, 11, 98, 0.8), rgba(0, 78, 146, 0.8)), 
+      url('../assets/signin_background.png') no-repeat center center/cover;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: auto; 
+}
+
+.entre-container {
+    text-align: center;
+}
+
+.cmp-logo {
+    margin-bottom: 20px; 
+    text-align: center;
+}
+
+.cmp-logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.entre-form {
+    width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: left;
+}
+
+.entre-form h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

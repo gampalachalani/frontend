@@ -30,6 +30,7 @@ const Investorform: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
     const userId = sessionStorage.getItem("userId");
     if (userId) {
       const updatedFormData = {
@@ -47,7 +48,7 @@ const Investorform: React.FC = () => {
   };
 
 
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errors,setErrors] = useState<{ [key: string]: string }>({});
 
   const validate = () => {
     let tempErrors: { [key: string]: string } = {};
@@ -76,8 +77,9 @@ const Investorform: React.FC = () => {
       <h2 className="text-center mb-4">Add Investor Details</h2>
       <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
         <div className="mb-3">
-          <label htmlFor="investorName" className="form-label">Investor Name</label>
-          <input type="text" className="form-control" id="investorName" name="investorName" value={formData.investorName} onChange={handleChange} required />
+            <label htmlFor="investorName" className="form-label">Investor Name</label>
+            <input type="text" className="form-control" id="investorName" name="investorName" value={formData.investorName} onChange={handleChange} required/>
+               {errors.investorName && <small className="text-danger">{errors.investorName}</small>}
         </div>
         <div className="mb-3">
           <label htmlFor="investorJob" className="form-label">Investor Job</label>
