@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/layout/Header";
 import Home from "./components/web/Home";
-import Footer from "./components/layout/Footer";
 import Enterprise from "./components/web/Enterprise";
 import Investors from "./components/web/Investors";
 import Login from "./components/auth/Login";
@@ -15,6 +13,7 @@ import InvsProfile from "./components/web/user/InvsProfile";
 import FundingForm from "./components/actions/FundingForm";
 import FundList from "./components/web/FundList";
 import AdminDashboard from "./components/admin/AdminDashboard";
+import Enterprises from "./components/admin/Enterprices";
 
 const App: React.FC = () => {
   return (
@@ -33,6 +32,7 @@ const App: React.FC = () => {
           <Route path="/funding" element={<FundingForm />} />
           <Route path="/fundList" element={<FundList />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
+          <Route path="/enterprises" element={<Enterprises />} />
         </Routes>
       </Router>
     </div>

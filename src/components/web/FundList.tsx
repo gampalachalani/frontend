@@ -83,10 +83,8 @@ const FundList: React.FC = () => {
           </div>
           <div className="card-body">
             <h5 className="card-title">{selectedFund.projectName}</h5>
-            <p><strong>Project ID:</strong> {selectedFund.projectId}</p>
             <p><strong>Description:</strong> {selectedFund.description}</p>
             <p><strong>Target Amount:</strong> {selectedFund.targetAmount}</p>
-            <p><strong>Current Amount:</strong> {selectedFund.currentAmount}</p>
             <p><strong>Account Name:</strong> {selectedFund.actName}</p>
             <p><strong>Branch:</strong> {selectedFund.branch}</p>
             <p><strong>Bank:</strong> {selectedFund.bank}</p>

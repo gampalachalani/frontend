@@ -90,18 +90,6 @@ const FundingForm: React.FC = () => {
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Current Amount</label>
-            <input
-              type="number"
-              className="form-control"
-              name="currentAmount"
-              value={formData.currentAmount}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="mb-3">
             <label className="form-label">Account Number</label>
             <input
               type="number"

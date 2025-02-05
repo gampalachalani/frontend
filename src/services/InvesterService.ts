@@ -59,3 +59,15 @@ export const getInvestorById = async (investorId: string) => {
     return [];
   }
 };
+
+export const getInvestorCount = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAllInvestors`);
+    if (!response.ok) throw new Error("Failed to fetch investors");
+    const investors = await response.json();
+    return investors.length; // Returns the count of investors
+  } catch (error) {
+    console.error("Error fetching investors:", error);
+    return 0;
+  }
+};
