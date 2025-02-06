@@ -55,3 +55,32 @@ export const logout = (): void => {
   sessionStorage.removeItem('role');
   window.location.href = '/login';
 };
+
+
+export const getAllUsers = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/all`);
+    return response.data;
+    console.log(response.data)
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};
+
+export const getUserCount = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/all`);
+    return response.data.length;
+    console.log(response.data)
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return 0;
+  }
+};
+
+export const deleteUser = async (id: string) => {
+  const response = await axios.delete(`${API_URL}/delete/${id}`);
+  return response.data;
+};
+

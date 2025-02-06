@@ -67,3 +67,20 @@ export const getEnterpriseById = async (enterpriseId: string) => {
     return [];
   }
 };
+
+export const getEnterpriseCount = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAll`);
+    if (!response.ok) throw new Error("Failed to fetch enterprises");
+    const enterprises = await response.json();
+    return enterprises.length; // Returns the count of enterprises
+  } catch (error) {
+    console.error("Error fetching enterprises:", error);
+    return 0;
+  }
+};
+
+export const deleteNotification = async (id: string) => {
+  const response = await axios.delete(`${API_URL}/deleteEnterprise/${id}`);
+  return response.data;
+};

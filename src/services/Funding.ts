@@ -28,8 +28,6 @@ export const getAllFunds = async () => {
     if (!response.ok) throw new Error("Failed to fetch enterprises");
     
     const funds = await response.json();
-    
-    // Filter only the funds with the status "published"
     const publishedFunds = funds.filter((fund: { status: string }) => fund.status === 'published');
     
     return publishedFunds;
@@ -39,4 +37,38 @@ export const getAllFunds = async () => {
   }
 };
 
-  
+export const getFullFundList = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAll`);
+    if (!response.ok) throw new Error("Failed to fetch enterprises");
+    
+    const funds = await response.json();
+    
+    return funds;
+  } catch (error) {
+    console.error("Error fetching enterprises:", error);
+    return [];
+  }
+};
+
+export const publishProject = async (projectId: string): Promise<void> => {
+  try {
+    await axios.put(`${API_URL}/publish/${projectId}`);
+    console.log("Project published successfully");
+  } catch (error) {
+    console.error("Error publishing project:", error);
+    throw error;
+  }
+};
+
+export const getFundCount = async () => {
+  try {
+    const response = await fetch(`${API_URL}/getAll`);
+    if (!response.ok) throw new Error("Failed to fetch funds");
+    const funds = await response.json();
+    return funds.length; // Returns the count of funds
+  } catch (error) {
+    console.error("Error fetching funds:", error);
+    return 0;
+  }
+};
