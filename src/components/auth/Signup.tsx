@@ -21,7 +21,7 @@ const Signup: React.FC = () => {
       const response = await register({ userEmail, firstName, lastName, password });
 
       if(response){
-        navigate('/login');
+        navigate('/Login');
       }
     } catch (err) {
       setError(err as string);
