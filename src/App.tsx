@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/web/Home";
 import Enterprise from "./components/web/Enterprise";
 import Investors from "./components/web/Investors";
@@ -16,25 +16,31 @@ import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <Router>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/enterprise" element={<Enterprise />} />
-          <Route path="/investors" element={<Investors />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/entpForms" element={<Entrepreneurform />} />
-          <Route path="/intForm" element={<Investorform />} />
-          <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
-          <Route path="/invsProfile/:investorId" element={<InvsProfile />} />
-          <Route path="/funding" element={<FundingForm />} />
-          <Route path="/fundList" element={<FundList />} />
-          <Route path="/dashboard" element={<AdminDashboard />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        
+        <Route path="/" element={<Navigate to="/home" />} />
+        
+        <Route path="/home" element={<Home />} />
+        <Route path="/enterprise" element={<Enterprise />} />
+        <Route path="/investors" element={<Investors />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/entpForms" element={<Entrepreneurform />} />
+        <Route path="/intForm" element={<Investorform />} />
+        <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
+        <Route path="/invsProfile/:investorId" element={<InvsProfile />} />
+        <Route path="/funding" element={<FundingForm />} />
+        <Route path="/fundList" element={<FundList />} />
+        <Route path="/dashboard" element={<AdminDashboard />} />
+        
+     
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+      </Routes>
+    </Router>
   );
 };
 
 export default App;
+
+
