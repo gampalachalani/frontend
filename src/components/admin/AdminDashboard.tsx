@@ -129,7 +129,7 @@ const AdminDashboard: React.FC = () => {
                                         <td>{fund.actNumber}</td>
                                         <td>{fund.bank}</td>
                                         <td>{fund.branch}</td>
-                                        <td>{fund.status}</td>
+                                        <td className={fund.status === "published" ? "text-success":"text-danger"}>{fund.status}</td>
                                         <td>
                                             <a className="bg-primary rounded text-white p-2 link" onClick={() => handlePublish(fund.projectId)}>
                                             {fund.status === "published" ? (<i className="fa-solid fa-eye"></i>) : (<i className="fa-solid fa-eye-slash"></i>)}

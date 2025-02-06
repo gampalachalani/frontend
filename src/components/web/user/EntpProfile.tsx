@@ -4,9 +4,13 @@ import { EnterpriseFormData } from "../../../interfaces/EnterpriseFormData";
 import { getEnterpriseById } from "../../../services/EnterpriceService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
+import axios from "axios";
+
 
 const EntpProfile: React.FC = () => {
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
+  const [investorName, setInvestorName] = useState<string>("Investor Name"); 
+  const [investorEmail, setInvestorEmail] = useState<string>("investor@example.com"); 
   const { enterpriseId } = useParams<{ enterpriseId: string }>();
 
   useEffect(() => {
@@ -21,9 +25,22 @@ const EntpProfile: React.FC = () => {
     fetchEnterprise();
   }, [enterpriseId]);
 
-  if (!enterprise) {
-    return <div className="text-center mt-5">Loading enterprise details...</div>;
-  }
+  const handleConnect = async () => {
+    if (enterprise) {
+      try {
+        const response = await axios.post("http://localhost:8080/api/email/send", {
+          recipient: enterprise.enterpriseEmail, 
+          name: investorName,
+          message: `${investorName} is interested in collaborating with your enterprise.`,
+          projectId: enterpriseId,
+        });
+        alert("Collaboration request sent successfully!");
+      } catch (error) {
+        console.error("Error sending email:", error);
+        alert("Failed to send collaboration request. Please try again.");
+      }
+    }
+  };
 
   return (
     <div className="main-content">
@@ -43,7 +60,7 @@ const EntpProfile: React.FC = () => {
         <div className="container-fluid d-flex align-items-center mx-5">
           <div className="row">
             <div className="col-lg-7 col-md-10">
-              <h1 className="display-2 text-white">{enterprise.enterpriseName}</h1>
+              <h1 className="display-2 text-white">{enterprise?.enterpriseName}</h1>
               <p className="text-white mt-0 mb-5">Welcome to the enterprise profile page.</p>
               <a href="#" className="btn btn-info">
                 Edit profile
@@ -58,7 +75,7 @@ const EntpProfile: React.FC = () => {
           <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0 mt-5">
             <div className="card card-profile shadow">
               <div className="card-body text-center">
-                {enterprise.imageFile && (
+                {enterprise && enterprise.imageFile && (
                   <img
                     src={`data:${enterprise.contentType};base64,${enterprise.imageFile}`}
                     className="card-img-top rounded"
@@ -66,10 +83,10 @@ const EntpProfile: React.FC = () => {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 )}
-                <h3 className="mt-3">{enterprise.enterpriseName}</h3>
-                <p className="text-muted">{enterprise.enterpriseType}</p>
-                <p>{enterprise.city}</p>
-                <a href="#" className="btn btn-sm btn-info mr-4">
+                <h3 className="mt-3">{enterprise?.enterpriseName}</h3>
+                <p className="text-muted">{enterprise?.enterpriseType}</p>
+                <p>{enterprise?.city}</p>
+                <a href="#" className="btn btn-sm btn-info mr-4" onClick={handleConnect}>
                   Connect
                 </a>
                 <a href="#" className="btn btn-sm btn-default">
@@ -86,15 +103,15 @@ const EntpProfile: React.FC = () => {
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6">
-                    <p><strong>Email:</strong> {enterprise.enterpriseEmail}</p>
-                    <p><strong>Register Number:</strong> {enterprise.registerNumber}</p>
-                    <p><strong>Enterprise Type:</strong> {enterprise.enterpriseType}</p>
+                    <p><strong>Email:</strong> {enterprise?.enterpriseEmail}</p>
+                    <p><strong>Register Number:</strong> {enterprise?.registerNumber}</p>
+                    <p><strong>Enterprise Type:</strong> {enterprise?.enterpriseType}</p>
                   </div>
                   <div className="col-md-6">
-                    <p><strong>Starting Date:</strong> {enterprise.startingDate}</p>
-                    <p><strong>Address:</strong> {enterprise.address}, {enterprise.city}</p>
-                    <p><strong>Phone:</strong> {enterprise.telNumber}</p>
-                    <p><strong>Website:</strong> <a href={enterprise.webUrl} target="_blank" rel="noopener noreferrer">{enterprise.webUrl}</a></p>
+                    <p><strong>Starting Date:</strong> {enterprise?.startingDate}</p>
+                    <p><strong>Address:</strong> {enterprise?.address}, {enterprise?.city}</p>
+                    <p><strong>Phone:</strong> {enterprise?.telNumber}</p>
+                    <p><strong>Website:</strong> <a href={enterprise?.webUrl} target="_blank" rel="noopener noreferrer">{enterprise?.webUrl}</a></p>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, } from "react-router-dom";
 import { submitInvestorForm } from "../../services/InvesterService";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const Investorform: React.FC = () => {
   const navigate = useNavigate();
@@ -72,6 +74,8 @@ const Investorform: React.FC = () => {
 
 
   return (
+    <>
+    <Header />
     <div className="container my-5">
       <h2 className="text-center mb-4">Add Investor Details</h2>
       <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
@@ -112,6 +116,8 @@ const Investorform: React.FC = () => {
         </div>
       </form>
     </div>
+    <Footer />
+    </>
   );
 };
 

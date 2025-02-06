@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { addProject } from "../../services/Funding";
 import { useNavigate } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 
 const FundingForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -48,6 +50,8 @@ const FundingForm: React.FC = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="container mt-4">
       <div className="card shadow p-4">
         <h2 className="mb-3 text-center">Add Funding Project</h2>
@@ -211,6 +215,8 @@ const FundingForm: React.FC = () => {
         </form>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

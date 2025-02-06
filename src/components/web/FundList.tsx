@@ -89,6 +89,9 @@ const FundList: React.FC = () => {
             <p><strong>Branch:</strong> {selectedFund.branch}</p>
             <p><strong>Bank:</strong> {selectedFund.bank}</p>
             <p><strong>Account Number:</strong> {selectedFund.actNumber}</p>
+            <div className="d-flex justify-content-end">
+              <a className='btn btn-outline-dark btn-sm' href={`/transfer/${selectedFund.projectId}`}>Make fund transfter</a>
+            </div>
           </div>
         </div>
       </div>

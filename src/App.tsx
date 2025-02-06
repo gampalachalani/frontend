@@ -16,6 +16,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import Enterprises from "./components/admin/Enterprices";
 import Investers from "./components/admin/Investors";
 import Users from "./components/admin/Users";
+import Transfer from "./components/web/Transfer";
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/enterprises" element={<Enterprises />} />
           <Route path="/investers" element={<Investers />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/transfer/:projectId" element={<Transfer />} />
         </Routes>
       </Router>
     </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import { submitEnterpriseForm } from "../../services/EnterpriceService";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const EnterpriseForm: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -74,6 +76,8 @@ const EnterpriseForm: React.FC = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="container my-5">
       <h2 className="text-center mb-4">Add Enterprise Details</h2>
       <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
@@ -133,6 +137,8 @@ const EnterpriseForm: React.FC = () => {
         </div>
       </form>
     </div>
+    <Footer />
+    </>
   );
 };
 
