@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import { submitEnterpriseForm } from "../../services/EnterpriceService";
-import "../styles/Entreform.css";
+//import "../styles/Entreform.css";
 
 const EnterpriseForm: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
