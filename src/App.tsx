@@ -1,13 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/web/Home";
 import Enterprise from "./components/web/Enterprise";
 import Investors from "./components/web/Investors";
 import Login from "./components/auth/Login";
-import "./App.css";
 import Signup from "./components/auth/Signup";
-import Entrepreneurform from "./components/actions/Entrepreneurform";
-import Investorform from "./components/actions/Investorform";
+import Entrepreneurform from "./components/actions/Entreform";
+import Investorform from "./components/actions/Invesform";
 import EntpProfile from "./components/web/user/EntpProfile";
 import InvsProfile from "./components/web/user/InvsProfile";
 import FundingForm from "./components/actions/FundingForm";
@@ -42,7 +41,7 @@ const App: React.FC = () => {
         </Routes>
       </Router>
     </div>
-  );
-};
+  )
+}
 
 export default App;

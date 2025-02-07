@@ -4,6 +4,7 @@ import { getAllEnterprises } from "../../services/EnterpriceService";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import "../styles/Entrepriselist.css"
 
 const EnterpriseList: React.FC = () => {
   const [enterprises, setEnterprises] = useState<EnterpriseFormData[]>([]);

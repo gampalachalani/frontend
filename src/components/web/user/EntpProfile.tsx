@@ -6,7 +6,6 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
 
-
 const EntpProfile: React.FC = () => {
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
   const [investorName, setInvestorName] = useState<string>("Investor Name"); 

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 
+
 const FundingForm: React.FC = () => {
   const [formData, setFormData] = useState({
     projectName: "",
@@ -52,12 +53,7 @@ const FundingForm: React.FC = () => {
   return (
     <>
     <Header />
-    <div className="container mt-4">
-      <div className="card shadow p-4">
-        <h2 className="mb-3 text-center">Add Funding Project</h2>
-        {message && <div className="alert alert-info">{message}</div>}
-
-        <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Project Name</label>
             <input
@@ -212,11 +208,10 @@ const FundingForm: React.FC = () => {
           >
             {loading ? "Submitting..." : "Submit Project"}
           </button>
+        <div/>
         </form>
-      </div>
-    </div>
-    <Footer/>
-    </>
+    <Footer />
+  </>
   );
 };
 

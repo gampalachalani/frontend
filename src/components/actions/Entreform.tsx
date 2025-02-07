@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import { submitEnterpriseForm } from "../../services/EnterpriceService";
+import "../styles/Entreform.css";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import cmplogo from "../assets/logo1.png";
 
 const EnterpriseForm: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -77,10 +79,22 @@ const EnterpriseForm: React.FC = () => {
 
   return (
     <>
-    <Header/>
+    <Header />
+    <form onSubmit={handleSubmit}>
     <div className="container my-5">
       <h2 className="text-center mb-4">Add Enterprise Details</h2>
       <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
+    <div className="entreform">
+      <div className="entreform-container">
+
+        <div className="cmp-logo">
+          <img src={cmplogo} alt="Company Logo" />
+        </div>
+
+        <div className="entreform-box">
+      <form onSubmit={handleSubmit}>
+        <h1 >Entrepreneur Form</h1>
+
         <div className="mb-3">
           <label className="form-label">Enterprise Name</label>
           <input type="text" className="form-control" name="enterpriseName" value={formData.enterpriseName} onChange={handleChange} required />
@@ -136,10 +150,15 @@ const EnterpriseForm: React.FC = () => {
           <button type="submit" className="btn btn-success w-100">Submit</button>
         </div>
       </form>
+      </div>
+      </div>
+      </div>
+    </form>
     </div>
+    </form>
     <Footer />
     </>
-  );
+  )
 };
 
 export default EnterpriseForm;
