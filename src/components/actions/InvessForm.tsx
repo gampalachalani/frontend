@@ -3,10 +3,6 @@ import { useNavigate, } from "react-router-dom";
 import { submitInvestorForm } from "../../services/InvesterService";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import cmplogo from "../assets/logo1.png";
-import "../styles/Invesform.css"
-
-
 const Investorform: React.FC = () => {
   const navigate = useNavigate();
 
@@ -80,22 +76,12 @@ const Investorform: React.FC = () => {
   return (
     <>
     <Header />
-    <div className="invesform">
-      <div className="invesform-container">
-
-        <div className="cmp-logo">
-          <img src={cmplogo} alt="Company Logo" />
-        </div>
-
-        <div className="invesform-box">
-      <form onSubmit={handleSubmit}>
-        <h1 >Investor Form</h1>
-
-        <div className="mb-3">
-            <label className="form-label">Investor Name</label>
-            <input type="text" className="form-control" id="investorName" name="investorName" value={formData.investorName} onChange={handleChange} required/>
-               {errors.investorName && <small className="text-danger">{errors.investorName}</small>}
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+              <label className="form-label">Investor Name</label>
+              <input type="text" className="form-control" id="investorName" name="investorName" value={formData.investorName} onChange={handleChange} required/>
+                 {errors.investorName && <small className="text-danger">{errors.investorName}</small>}
+          </div>
         <div className="mb-3">
           <label className="form-label">Investor Job</label>
           <input type="text" className="form-control" id="investorJob" name="investorJob" value={formData.investorJob} onChange={handleChange} required />
@@ -128,9 +114,6 @@ const Investorform: React.FC = () => {
           <button type="submit" className="btn btn-success w-100">Submit</button>
         </div>
       </form>
-    </div>
-    </div>
-    </div>
     <Footer />
     </>
   );
