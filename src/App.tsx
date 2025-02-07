@@ -1,12 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/web/Home";
 import Enterprise from "./components/web/Enterprise";
 import Investors from "./components/web/Investors";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
-import Entrepreneurform from "./components/actions/Entreform";
-import Investorform from "./components/actions/Invesform";
 import EntpProfile from "./components/web/user/EntpProfile";
 import InvsProfile from "./components/web/user/InvsProfile";
 import FundingForm from "./components/actions/FundingForm";
@@ -16,6 +14,8 @@ import Enterprises from "./components/admin/Enterprices";
 import Investers from "./components/admin/Investors";
 import Users from "./components/admin/Users";
 import Transfer from "./components/web/Transfer";
+import EnterpriseForm from "./components/actions/Entreform";
+import Investorform from "./components/actions/Invesform";
 
 const App: React.FC = () => {
   return (
@@ -27,8 +27,6 @@ const App: React.FC = () => {
           <Route path="/investors" element={<Investors />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/entpForms" element={<Entrepreneurform />} />
-          <Route path="/intForm" element={<Investorform />} />
           <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
           <Route path="/invsProfile/:investorId" element={<InvsProfile />} />
           <Route path="/funding" element={<FundingForm />} />
@@ -38,6 +36,8 @@ const App: React.FC = () => {
           <Route path="/investers" element={<Investers />} />
           <Route path="/users" element={<Users />} />
           <Route path="/transfer/:projectId" element={<Transfer />} />
+          <Route path="/entpForm" element={<EnterpriseForm />} />
+          <Route path="/intForm" element={<Investorform />} />
         </Routes>
       </Router>
     </div>

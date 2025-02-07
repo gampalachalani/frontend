@@ -19,9 +19,10 @@ const Signup: React.FC = () => {
     e.preventDefault();
     try {
       const response = await register({ userEmail, firstName, lastName, password });
-
+      sessionStorage.setItem('userId', response);
+      console.log(response);
       if(response){
-        navigate('/Login');
+        navigate('/home');
       }
     } catch (err) {
       setError(err as string);
