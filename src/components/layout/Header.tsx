@@ -24,14 +24,27 @@ const Header: React.FC = () => {
           </NavLink>
         </div>
         <div className="left-links">
-          <NavLink className="nav-link" to="/home">Home</NavLink>
-          <NavLink className="nav-link" to="/enterprise">Entrepreneurs</NavLink>
-          <NavLink className="nav-link" to="/investors">Investors</NavLink>
+          {token ? (
+            <div><NavLink className="nav-link" to="/investors">Investors</NavLink></div>
+          ):(
+            <NavLink className="nav-link" to="/home">Home</NavLink>
+          )}
+          {token ? (
+            <div><NavLink className="nav-link" to="/enterprise">Entrepreneurs</NavLink></div>
+          ):(
+            ""
+          )}
+          
         </div>
 
         <div className="right-links">
-          <NavLink className="nav-link" to="/funding">Fund Request</NavLink>
-          <NavLink className="nav-link" to="/fundList">Fund List</NavLink>
+          {token ? (
+            <div><NavLink className="nav-link" to="/funding">Fund Request</NavLink></div>
+          ):("")}
+          {token ? (
+            <div>
+          <NavLink className="nav-link" to="/fundList">Fund List</NavLink></div>
+          ):("")}
 
           {token ? (
             <button className="nav-link" onClick={logout}>

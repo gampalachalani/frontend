@@ -31,7 +31,7 @@ export const submitInvestorForm = async (
       await axios.post(`${API_URL}/add`, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.error("Error submitting data", error);
       alert("Failed to submit investor data.");

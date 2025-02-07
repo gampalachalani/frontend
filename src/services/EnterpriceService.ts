@@ -12,7 +12,6 @@ export const submitEnterpriseForm = async (
   try {
     const data = new FormData();
 
-    // Wrapping all fields inside an "enterprise" JSON key
     data.append(
       "enterprise",
       JSON.stringify({
@@ -38,7 +37,7 @@ export const submitEnterpriseForm = async (
     });
 
     alert("Enterprise details added successfully!");
-    navigate("/"); // Redirect after success
+    navigate("/"); 
   } catch (error) {
     console.error("Error submitting enterprise form:", error);
     alert("Failed to add enterprise details.");
