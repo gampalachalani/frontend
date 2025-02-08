@@ -5,8 +5,10 @@ import { getEnterpriseById } from "../../../services/EnterpriceService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
+import useAuthCheck from "../../../AuthChecking";
 
 const EntpProfile: React.FC = () => {
+  useAuthCheck();
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
   const { enterpriseId } = useParams<{ enterpriseId: string }>();
   const [isPopupOpen, setIsPopupOpen] = useState(false);

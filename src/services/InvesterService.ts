@@ -118,3 +118,14 @@ export const getInvestmentByUserId = async () => {
     return false;
   }
 };
+
+
+export const getInvByUserId = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getInvestmentByUserId/${sessionStorage.getItem("userId")}`);
+    return response.data?.investmentId || null; 
+  } catch (error) {
+    console.error("Error fetching enterprise data:", error);
+    return false;
+  }
+}

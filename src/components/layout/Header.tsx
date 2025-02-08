@@ -8,6 +8,8 @@ const Header: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
   const [paths, setPath] = useState<string | null>(null);
+  const [enterpriseId, setEnterpriseId] = useState<string | null>(null);
+  const [investmentId, setInvestmentId] = useState<string | null>(null);
 
 
   useEffect(() => {
@@ -15,6 +17,8 @@ const Header: React.FC = () => {
       const storedToken = sessionStorage.getItem("token");
       const fName = sessionStorage.getItem("firstName");
       const path = sessionStorage.getItem("path");
+      const id = sessionStorage.getItem("mokakHariId");
+      console.log(id);
       
       if (path === "entp") {
         setPath("entp");
@@ -22,7 +26,8 @@ const Header: React.FC = () => {
       if (path === "int") {
         setPath("int");
       }
-
+      setEnterpriseId(id);
+      setInvestmentId(id);
       setToken(storedToken);
       setFirstName(fName);
     };
@@ -38,11 +43,11 @@ const Header: React.FC = () => {
           </NavLink>
         </div>
         <div className="left-links">
-
+      
           {paths === "entp" ? (
             <div><NavLink className="nav-link" to="/investors">Investors</NavLink></div>
           ):(
-            ""
+            <NavLink className="nav-link" to="/about-us">About Us</NavLink>
           )}
           {paths === "int" ? (
             <div><NavLink className="nav-link" to="/enterprise">Entrepreneur</NavLink></div>
@@ -72,7 +77,17 @@ const Header: React.FC = () => {
             </>
           )}
 
-          <div className="text-white d-flex"><a href="">{firstName}</a></div>
+          
+          {paths === "entp" ? (
+            <div className="text-white d-flex"><a href={`/updateEnterprise/${enterpriseId}`}>{firstName}</a></div>
+          ):(
+            ""
+          )}
+          {paths === "int" ? (
+            <div className="text-white d-flex"><a href={`/updateInvester/${investmentId}`}>{firstName}</a></div>
+          ):(
+            ""
+          )}
         </div>
       </div>
     </nav>

@@ -5,8 +5,8 @@ import { login } from "../../services/AuthService";
 import { useNavigate } from "react-router-dom";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import { getEnterpriseByUserId } from "../../services/EnterpriceService";
-import { getInvestmentByUserId } from "../../services/InvesterService";
+import { getEnterpriseByUserId, getEntpBYUserId } from "../../services/EnterpriceService";
+import { getInvByUserId, getInvestmentByUserId } from "../../services/InvesterService";
 
 const Login: React.FC = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -25,11 +25,17 @@ const Login: React.FC = () => {
         return;
       }
       if (await getEnterpriseByUserId) {
+        const entpId = await getEntpBYUserId();
         sessionStorage.setItem("path", "entp");
+        sessionStorage.setItem("mokakHariId", entpId);
+        console.log(entpId);
         navigate("/investors");
       }
       if (await getInvestmentByUserId()) {
+        const ivtId = await getInvByUserId();
+        sessionStorage.setItem("mokakHariId", ivtId);
         sessionStorage.setItem("path", "int");
+        console.log(ivtId);
         navigate("/enterprise");
       }
     } catch (err) {

@@ -20,6 +20,8 @@ import UpdateInvester from "./components/actions/UpdateInvester";
 import UpdateEnterpriseForm from "./components/actions/UpdateEnterprise";
 import EntpProfileEdit from "./components/web/user/EntpProfileEdit";
 import InvsProfileEdit from "./components/web/user/InvsProfileEdit";
+import AboutUs from "./components/web/AboutUs";
+import TermsAndConditions from "./components/web/TermsAndConditions";
 
 const App: React.FC = () => {
   return (
@@ -30,7 +32,9 @@ const App: React.FC = () => {
           <Route path="/enterprise" element={<Enterprise />} />
           <Route path="/investors" element={<Investors />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/entpProfile/:enterpriseId" element={<EntpProfile />} />
           <Route path="/entpProfileEdit/:enterpriseId" element={<EntpProfileEdit />} />
           <Route path="/invsProfile/:investorId" element={<InvsProfile />} />

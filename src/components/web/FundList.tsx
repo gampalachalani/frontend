@@ -3,8 +3,11 @@ import { getAllFunds } from '../../services/Funding';
 import { Fund } from '../../interfaces/Fund';
 import Header from '../layout/Header';
 import Footer from '../layout/Footer';
+import useAuthCheck from "../../AuthChecking";
+
 
 const FundList: React.FC = () => {
+  useAuthCheck();
   const [funds, setFunds] = useState<Fund[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
