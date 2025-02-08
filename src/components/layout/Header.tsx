@@ -7,12 +7,26 @@ import { NavLink } from "react-router-dom";
 const Header: React.FC = () => {
   const [token, setToken] = useState<string | null>(null);
   const [firstName, setFirstName] = useState<string | null>(null);
+  const [paths, setPath] = useState<string | null>(null);
+
 
   useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
-    const fName = sessionStorage.getItem("firstName");
-    setToken(storedToken);
-    setFirstName(fName);
+    const fetchData = async () => {
+      const storedToken = sessionStorage.getItem("token");
+      const fName = sessionStorage.getItem("firstName");
+      const path = sessionStorage.getItem("path");
+      
+      if (path === "entp") {
+        setPath("entp");
+      }
+      if (path === "int") {
+        setPath("int");
+      }
+
+      setToken(storedToken);
+      setFirstName(fName);
+    };
+    fetchData();
   }, []);
 
   return (
@@ -24,13 +38,14 @@ const Header: React.FC = () => {
           </NavLink>
         </div>
         <div className="left-links">
-          {token ? (
+
+          {paths === "entp" ? (
             <div><NavLink className="nav-link" to="/investors">Investors</NavLink></div>
           ):(
-            <NavLink className="nav-link" to="/home">Home</NavLink>
+            ""
           )}
-          {token ? (
-            <div><NavLink className="nav-link" to="/enterprise">Entrepreneurs</NavLink></div>
+          {paths === "int" ? (
+            <div><NavLink className="nav-link" to="/enterprise">Entrepreneur</NavLink></div>
           ):(
             ""
           )}
@@ -57,7 +72,7 @@ const Header: React.FC = () => {
             </>
           )}
 
-          <div className="text-white d-flex">{firstName}</div>
+          <div className="text-white d-flex"><a href="">{firstName}</a></div>
         </div>
       </div>
     </nav>

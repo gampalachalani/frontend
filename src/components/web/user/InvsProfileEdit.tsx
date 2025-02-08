@@ -155,30 +155,6 @@ const InvsProfile: React.FC = () => {
           </div>
         </div>
         <div className="modal-footer d-flex justify-content-center gap-3">
-      <button
-        className="btn btn-secondary"
-        style={{
-          padding: "6px 15px",
-          borderRadius: "5px",
-          fontWeight: "bold",
-          width: "100px",
-        }}
-        onClick={() => setIsPopupOpen(false)}
-      >
-        Close
-      </button>
-      <button
-        className="btn btn-success"
-        style={{
-          padding: "6px 15px",
-          borderRadius: "5px",
-          fontWeight: "bold",
-          width: "100px",
-        }}
-        onClick={handleCancel}
-      >
-        Connect
-      </button>
     </div>
   </div>
 )}

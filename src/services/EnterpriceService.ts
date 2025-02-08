@@ -84,6 +84,16 @@ export const deleteNotification = async (id: string) => {
   return response.data;
 };
 
+export const updateEnterprise = async (enterpriseId: string, updatedData: any) => {
+  try {
+    const response = await axios.put(`${API_URL}/updateEnterprise/${enterpriseId}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating enterprise:", error);
+    return null;
+  }
+};
+
 export const getEnterpriseByUserId = async () => {
   try {
     const response = await axios.get(`${API_URL}/getEnterpriseByUserId/${sessionStorage.getItem("userId")}`);

@@ -25,11 +25,11 @@ const Login: React.FC = () => {
         return;
       }
       if (await getEnterpriseByUserId) {
-        //console.log("User is an Entrepreneur");
+        sessionStorage.setItem("path", "entp");
         navigate("/investors");
       }
       if (await getInvestmentByUserId()) {
-        //console.log("User is an Investor");
+        sessionStorage.setItem("path", "int");
         navigate("/enterprise");
       }
     } catch (err) {
