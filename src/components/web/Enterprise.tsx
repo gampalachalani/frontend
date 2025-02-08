@@ -67,12 +67,14 @@ const EnterpriseList: React.FC = () => {
                   <p className="card-text">
                     <strong>Address:</strong> {enterprise.address}, {enterprise.city}
                   </p>
-                  <a href={enterprise.webUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    Visit Website
-                  </a>
-                  <a href={`/entpProfile/${enterprise.enterpriseId}`} className="btn btn-outline-dark mx-2" rel="noopener noreferrer">
-                    View Profile
-                  </a>
+                  <div className="d-flex gap-3">
+  <a href={enterprise.webUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+    Visit Website
+  </a>
+  <a href={`/entpProfile/${enterprise.enterpriseId}`} className="btn btn-outline-dark" rel="noopener noreferrer">
+    View Profile
+  </a>
+</div>
                 </div>
               </div>
             </div>

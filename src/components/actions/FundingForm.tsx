@@ -3,7 +3,8 @@ import { addProject } from "../../services/Funding";
 import { useNavigate } from "react-router-dom";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";
-
+import cmplogo from "../assets/logo1.png";
+import "../styles/FundingForm.css";
 
 const FundingForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -53,7 +54,17 @@ const FundingForm: React.FC = () => {
   return (
     <>
     <Header />
-    <form onSubmit={handleSubmit}>
+    <div className="fundingform">
+      <div className="fundingform-container">
+
+        <div className="cmp-logo">
+          <img src={cmplogo} alt="Company Logo" />
+        </div>
+
+        <div className="fundingform-box">
+      <form onSubmit={handleSubmit}>
+        <h1 >Funding Form</h1>
+
           <div className="mb-3">
             <label className="form-label">Project Name</label>
             <input
@@ -208,8 +219,10 @@ const FundingForm: React.FC = () => {
           >
             {loading ? "Submitting..." : "Submit Project"}
           </button>
-        <div/>
         </form>
+      </div>
+    </div>
+    </div>
     <Footer />
   </>
   );

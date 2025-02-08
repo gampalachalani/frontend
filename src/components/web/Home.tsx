@@ -11,7 +11,7 @@ const Home : React.FC = () => {
         <section className="main">
           <h1>Welcome to SeedLink</h1>
           <div className="buttons">
-               <a href="/entpForms">
+               <a href="/entpForm">
                <button className="btn btn_1">Join as an Entrepreneur</button>
                </a>
                <a href="/intForm">

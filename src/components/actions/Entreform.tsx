@@ -78,12 +78,8 @@ const EnterpriseForm: React.FC = () => {
   };
 
   return (
-    <>
+  <>
     <Header />
-    <form onSubmit={handleSubmit}>
-    <div className="container my-5">
-      <h2 className="text-center mb-4">Add Enterprise Details</h2>
-      <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
     <div className="entreform">
       <div className="entreform-container">
 
@@ -94,6 +90,7 @@ const EnterpriseForm: React.FC = () => {
         <div className="entreform-box">
       <form onSubmit={handleSubmit}>
         <h1 >Entrepreneur Form</h1>
+
 
         <div className="mb-3">
           <label className="form-label">Enterprise Name</label>
@@ -152,13 +149,10 @@ const EnterpriseForm: React.FC = () => {
       </form>
       </div>
       </div>
-      </div>
-    </form>
     </div>
-    </form>
     <Footer />
     </>
-  )
+  );
 };
 
 export default EnterpriseForm;

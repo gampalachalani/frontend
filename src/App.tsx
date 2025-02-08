@@ -14,8 +14,8 @@ import Enterprises from "./components/admin/Enterprices";
 import Investers from "./components/admin/Investors";
 import Users from "./components/admin/Users";
 import Transfer from "./components/web/Transfer";
-import EnterpriseForm from "./components/actions/Entreform";
-import Investorform from "./components/actions/Invesform";
+import EnterpriseForm from "./components/actions/EntreForm";
+import Investorform from "./components/actions/InvesForm";
 
 const App: React.FC = () => {
   return (
