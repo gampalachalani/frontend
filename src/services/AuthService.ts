@@ -30,13 +30,13 @@ export const login = async (credentials: { userEmail: string; password: string }
       const userEmail = response.data.userEmail;
       const firstName = response.data.firstName;
       const userId = response.data.userId;
-      const role = response.data.role;
+      const userRole = response.data.userRole;
       sessionStorage.setItem('token', token);
       sessionStorage.setItem('userEmail', userEmail);
       sessionStorage.setItem('firstName', firstName);
       sessionStorage.setItem('userId', userId);
-      sessionStorage.setItem('role', role);
-      return response.data;
+      sessionStorage.setItem('role', userRole);
+      return userRole;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorData = error.response.data as ErrorResponse;

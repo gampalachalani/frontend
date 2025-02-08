@@ -106,3 +106,15 @@ export const updateInvestorProfile = async (investorId: string,formData: Investo
     alert("Failed to update investor profile.");
   }
 };
+
+export const getInvestmentByUserId = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getInvestmentByUserId/${sessionStorage.getItem("userId")}`);
+    if(response.data){
+      return true;
+    }
+  } catch (error) {
+    console.error("Error fetching enterprise data:", error);
+    return false;
+  }
+};

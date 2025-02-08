@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InvestorFormData } from "../../interfaces/InvestorFormData";
-import { getAllInvesters } from "../../services/InvesterService";
+import { getAllInvesters, getInvestmentByUserId } from "../../services/InvesterService";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
@@ -15,6 +15,7 @@ const InvestorList: React.FC = () => {
       const data = await getAllInvesters();
       setInvestors(data);
       setFilteredInvestors(data);
+      console.log(getInvestmentByUserId());
     };
     fetchInvestors();
   }, []);

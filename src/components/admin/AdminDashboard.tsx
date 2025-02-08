@@ -10,8 +10,10 @@ import { Fund } from "../../interfaces/Fund";
 import { getUserCount } from "../../services/AuthService";
 import { getEnterpriseCount } from "../../services/EnterpriceService";
 import { getInvestorCount } from "../../services/InvesterService";
+import useAuthCheck from "../../AuthChecking";
 
 const AdminDashboard: React.FC = () => {
+  useAuthCheck();
   const [funds, setFunds] = useState<Fund[]>([]);
   const [userCount, setUserCount] = useState<number>(0);
   const [enterpriseCount, setEnterpriseCount] = useState<number>(0);

@@ -83,3 +83,15 @@ export const deleteNotification = async (id: string) => {
   const response = await axios.delete(`${API_URL}/deleteEnterprise/${id}`);
   return response.data;
 };
+
+export const getEnterpriseByUserId = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getEnterpriseByUserId/${sessionStorage.getItem("userId")}`);
+    if(response.data){
+      return true;
+    }
+  } catch (error) {
+    console.error("Error fetching enterprise data:", error);
+    return false;
+  }
+};

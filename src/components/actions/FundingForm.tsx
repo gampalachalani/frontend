@@ -20,7 +20,7 @@ const FundingForm: React.FC = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (
