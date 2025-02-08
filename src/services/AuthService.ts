@@ -54,6 +54,7 @@ export const logout = (): void => {
   sessionStorage.removeItem('userEmail');
   sessionStorage.removeItem('firstName');
   sessionStorage.removeItem('userId');
+  sessionStorage.removeItem('path');
   sessionStorage.removeItem('role');
   window.location.href = '/login';
 };
