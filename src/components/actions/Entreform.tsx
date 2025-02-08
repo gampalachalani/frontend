@@ -147,8 +147,14 @@ const EnterpriseForm: React.FC = () => {
         </div>
 
         <div className="text-center">
-          <button type="submit" className="btn btn-success w-100">Submit</button>
-        </div>
+        <p>
+    By submitting, you agree to our{" "}
+    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">
+      Terms and Conditions
+    </a>.
+  </p>
+  <button type="submit" className="btn btn-success w-100">Submit</button>
+</div>
       </form>
       </div>
       </div>
