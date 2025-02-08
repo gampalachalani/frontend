@@ -27,7 +27,10 @@ const Header: React.FC = () => {
           {token ? (
             <div><NavLink className="nav-link" to="/investors">Investors</NavLink></div>
           ):(
-            <NavLink className="nav-link" to="/home">Home</NavLink>
+              <>
+                <NavLink className="nav-link" to="/home">Home</NavLink>
+                <NavLink className="nav-link" to="/about-us">About Us</NavLink>
+              </>
           )}
           {token ? (
             <div><NavLink className="nav-link" to="/enterprise">Entrepreneurs</NavLink></div>
