@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getAllEnterprises } from "../../services/EnterpriceService";
+import { getAllEnterprises, getEnterpriseByUserId } from "../../services/EnterpriceService";
 import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
@@ -15,6 +15,7 @@ const EnterpriseList: React.FC = () => {
       const data = await getAllEnterprises();
       setEnterprises(data);
       console.log(data);
+      console.log(getEnterpriseByUserId());
     };
     fetchEnterprises();
   }, []);
