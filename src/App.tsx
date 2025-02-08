@@ -15,7 +15,9 @@ import Investers from "./components/admin/Investors";
 import Users from "./components/admin/Users";
 import Transfer from "./components/web/Transfer";
 import EnterpriseForm from "./components/actions/Entreform";
-import Investorform from "./components/actions/Invesform";
+import Investorform from "./components/actions/InvesForm";
+import About from "./components/web/AboutUs";
+import TermsAndConditions from "./components/web/TermsAndConditions";
 
 const App: React.FC = () => {
   return (
@@ -38,6 +40,8 @@ const App: React.FC = () => {
           <Route path="/transfer/:projectId" element={<Transfer />} />
           <Route path="/entpForm" element={<EnterpriseForm />} />
           <Route path="/intForm" element={<Investorform />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Routes>
       </Router>
     </div>
