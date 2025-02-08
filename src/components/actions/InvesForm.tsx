@@ -84,10 +84,9 @@ const Investorform: React.FC = () => {
           </div>
 
           <div className="entreform-box">
-            <h1>Investor Registration</h1>
+            <h1>Get Started Now!</h1>
             <p className="text-center">
-              Join us and find great investment opportunities today!
-            </p>
+It's easy to create a pitch using our online form. Your pitch can be in front of our investors before you know it.            </p>
 
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
