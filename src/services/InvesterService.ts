@@ -76,3 +76,33 @@ export const deleteInvester = async (id: string) => {
   const response = await axios.delete(`${API_URL}/deleteInvestment/${id}`);
   return response.data;
 };
+
+export const updateInvestorProfile = async (investorId: string,formData: InvestorFormData): Promise<void> => {
+  const data = new FormData();
+  data.append(
+    "investment",
+    JSON.stringify({
+      investorName: formData.investorName,
+      investorJob: formData.investorJob,
+      investorInterest: formData.investorInterest,
+      otherDetails: formData.otherDetails,
+      budgetLimit: formData.budgetLimit,
+      address: formData.address,
+      telNumber: formData.telNumber,
+    })
+  );
+
+  if (formData.imageFile) {
+    data.append("imageFile", formData.imageFile);
+  }
+
+  try {
+    await axios.put(`${API_URL}/updateInvestment/${investorId}`, data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    alert("Investor profile updated successfully!");
+  } catch (error) {
+    console.error("Error updating investor profile", error);
+    alert("Failed to update investor profile.");
+  }
+};

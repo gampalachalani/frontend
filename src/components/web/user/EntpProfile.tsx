@@ -5,6 +5,7 @@ import { getEnterpriseById } from "../../../services/EnterpriceService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
+
 const EntpProfile: React.FC = () => {
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
   const { enterpriseId } = useParams<{ enterpriseId: string }>();
@@ -81,7 +82,7 @@ const EntpProfile: React.FC = () => {
             <div className="col-lg-7 col-md-10">
               <h1 className="display-2 text-white">{enterprise?.enterpriseName}</h1>
               <p className="text-white mt-0 mb-5">Welcome to the enterprise profile page.</p>
-              <button className="btn btn-info" onClick={() => setIsPopupOpen(true)}>Connect</button>
+              <button className="btn btn-info">Edit Profile</button>
             </div>
           </div>
         </div>
@@ -105,7 +106,6 @@ const EntpProfile: React.FC = () => {
                 <p className="text-muted">{enterprise?.enterpriseType}</p>
                 <p>{enterprise?.city}</p>
                 <button className="btn btn-sm btn-info mr-4" onClick={() => setIsPopupOpen(true)}>Connect</button>
-                <button className="btn btn-sm btn-default">Message</button>
               </div>
             </div>
           </div>
@@ -148,9 +148,32 @@ const EntpProfile: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="modal-footer">
-          <button className="btn btn-danger" onClick={handleCancel}>Close</button>
-        </div>
+        <div className="modal-footer d-flex justify-content-center gap-3">
+      <button
+        className="btn btn-secondary"
+        style={{
+          padding: "6px 15px",
+          borderRadius: "5px",
+          fontWeight: "bold",
+          width: "100px",
+        }}
+        onClick={() => setIsPopupOpen(false)}
+      >
+        Close
+      </button>
+      <button
+        className="btn btn-success"
+        style={{
+          padding: "6px 15px",
+          borderRadius: "5px",
+          fontWeight: "bold",
+          width: "100px",
+        }}
+        onClick={handleCancel}
+      >
+        Connect
+      </button>
+    </div>
   </div>
 )}
       <Footer />

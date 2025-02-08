@@ -9,14 +9,14 @@ const AdminSideBar: React.FC = () => {
       >
         <div className="sb-sidenav-menu">
           <div className="nav">
-            <div className="sb-sidenav-menu-heading">Core</div>
+            <div className="sb-sidenav-menu-heading"></div>
             <a className="nav-link" href="/dashboard">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
               Dashboard
             </a>
-            <div className="sb-sidenav-menu-heading">Company</div>
+            <div className="sb-sidenav-menu-heading">Users</div>
             <a
               className="nav-link collapsed"
               href="#"
@@ -28,7 +28,7 @@ const AdminSideBar: React.FC = () => {
               <div className="sb-nav-link-icon">
                 <i className="fas fa-columns"></i>
               </div>
-              Business
+              Menu
               <div className="sb-sidenav-collapse-arrow">
                 <i className="fas fa-angle-down"></i>
               </div>
@@ -51,22 +51,6 @@ const AdminSideBar: React.FC = () => {
                 </a>
               </nav>
             </div>
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapsePages"
-              aria-expanded="false"
-              aria-controls="collapsePages"
-            >
-              <div className="sb-nav-link-icon">
-                <i className="fas fa-book-open"></i>
-              </div>
-              All Users
-              <div className="sb-sidenav-collapse-arrow">
-                <i className="fas fa-angle-down"></i>
-              </div>
-            </a>
             <div
               className="collapse"
               id="collapsePages"
@@ -77,38 +61,6 @@ const AdminSideBar: React.FC = () => {
                 className="sb-sidenav-menu-nested nav accordion"
                 id="sidenavAccordionPages"
               >
-                <a
-                  className="nav-link collapsed"
-                  href="#"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#pagesCollapseAuth"
-                  aria-expanded="false"
-                  aria-controls="pagesCollapseAuth"
-                >
-                  Authentication
-                  <div className="sb-sidenav-collapse-arrow">
-                    <i className="fas fa-angle-down"></i>
-                  </div>
-                </a>
-                <div
-                  className="collapse"
-                  id="pagesCollapseAuth"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordionPages"
-                >
-                  <nav className="sb-sidenav-menu-nested nav">
-                    <a className="nav-link" href="login.html">
-                      Login
-                    </a>
-                    <a className="nav-link" href="register.html">
-                      Register
-                    </a>
-                    <a className="nav-link" href="password.html">
-                      Forgot Password
-                    </a>
-                  </nav>
-                </div>
-                
                 <div
                   className="collapse"
                   id="pagesCollapseError"
@@ -121,7 +73,7 @@ const AdminSideBar: React.FC = () => {
         </div>
         <div className="sb-sidenav-footer">
           <div className="small">Logged in as:</div>
-          Start Bootstrap
+          Seed Link
         </div>
       </nav>
     </div>
