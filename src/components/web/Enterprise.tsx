@@ -5,8 +5,12 @@ import { EnterpriseFormData } from "../../interfaces/EnterpriseFormData";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import "../styles/Entrepriselist.css"
+import useAuthCheck from "../../AuthChecking";
+
+
 
 const EnterpriseList: React.FC = () => {
+  useAuthCheck();
   const [enterprises, setEnterprises] = useState<EnterpriseFormData[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 

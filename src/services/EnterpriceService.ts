@@ -105,3 +105,15 @@ export const getEnterpriseByUserId = async () => {
     return false;
   }
 };
+
+
+export const getEntpBYUserId = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getEnterpriseByUserId/${sessionStorage.getItem("userId")}`);
+    
+    return response.data?.enterpriseId || null; // Return only enterpriseId, or null if not found
+  } catch (error) {
+    console.error("Error fetching enterprise data:", error);
+    return null; // Return null in case of an error
+  }
+};

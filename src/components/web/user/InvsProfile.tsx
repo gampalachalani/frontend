@@ -5,8 +5,10 @@ import { getInvestorById } from "../../../services/InvesterService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
+import useAuthCheck from "../../../AuthChecking";
 
 const InvsProfile: React.FC = () => {
+  useAuthCheck();
     const [investor, setInvestor] = useState<InvestorFormData | null>(null);
     const { investorId } = useParams<{ investorId: string }>();
     const [isPopupOpen, setIsPopupOpen] = useState(false);

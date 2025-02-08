@@ -4,8 +4,11 @@ import { InvestorFormData } from "../../interfaces/InvestorFormData";
 import { getAllInvesters, getInvestmentByUserId } from "../../services/InvesterService";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import useAuthCheck from "../../AuthChecking";
+
 
 const InvestorList: React.FC = () => {
+  useAuthCheck();
   const [investors, setInvestors] = useState<InvestorFormData[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredInvestors, setFilteredInvestors] = useState<InvestorFormData[]>([]);
