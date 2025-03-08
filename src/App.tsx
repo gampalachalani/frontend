@@ -22,6 +22,8 @@ import EntpProfileEdit from "./components/web/user/EntpProfileEdit";
 import InvsProfileEdit from "./components/web/user/InvsProfileEdit";
 import AboutUs from "./components/web/AboutUs";
 import TermsAndConditions from "./components/web/TermsAndConditions";
+import ForgotPassword from "./components/auth/forgotpassword";
+import UpdatePassword from "./components/auth/UpdatePassword";
 
 const App: React.FC = () => {
   return (
@@ -50,6 +52,8 @@ const App: React.FC = () => {
           <Route path="/intForm" element={<Investorform />} />
           <Route path="/updateInvester/:investorId" element={<UpdateInvester />} />
           <Route path="/updateEnterprise/:enterpriseId" element={<UpdateEnterpriseForm />} />
+          <Route path="/fpass" element={<ForgotPassword />} />
+          <Route path="/updatePassword/:userEmail" element={<UpdatePassword />} />
         </Routes>
       </Router>
     </div>

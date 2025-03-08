@@ -54,7 +54,6 @@ const EnterpriseForm: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validate = () => {
-    // eslint-disable-next-line prefer-const
     let tempErrors: { [key: string]: string } = {};
     if (!formData.enterpriseName) tempErrors.enterpriseName = "Enterprise Name is required";
     if (!formData.enterpriseEmail) {
@@ -79,11 +78,8 @@ const EnterpriseForm: React.FC = () => {
   };
 
   return (
-    <>
+  <>
     <Header />
-    <form onSubmit={handleSubmit}>
-    <div className="container my-5">
-      <form onSubmit={handleSubmit} className="border p-4 rounded shadow">
     <div className="entreform">
       <div className="entreform-container">
 
@@ -93,8 +89,9 @@ const EnterpriseForm: React.FC = () => {
 
         <div className="entreform-box">
       <form onSubmit={handleSubmit}>
-              <h1>Get Started Now!</h1>
-              <p className="text-center">It's easy to create a pitch using our online form. Your pitch can be in front of our investors before you know it.</p>
+        <h1 >Entrepreneur Form</h1>
+
+
         <div className="mb-3">
           <label className="form-label">Enterprise Name</label>
           <input type="text" className="form-control" name="enterpriseName" value={formData.enterpriseName} onChange={handleChange} required />
@@ -147,24 +144,15 @@ const EnterpriseForm: React.FC = () => {
         </div>
 
         <div className="text-center">
-        <p>
-    By submitting, you agree to our{" "}
-    <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer">
-      Terms and Conditions
-    </a>.
-  </p>
-  <button type="submit" className="btn btn-success w-100">Submit</button>
-</div>
+          <button type="submit" className="btn btn-success w-100">Submit</button>
+        </div>
       </form>
       </div>
       </div>
-      </div>
-    </form>
     </div>
-    </form>
     <Footer />
     </>
-  )
+  );
 };
 
 export default EnterpriseForm;

@@ -14,7 +14,7 @@ function useAuthCheck() {
       return;
     }
 
-    const userRoutes = ["/home", "/enterprise", "/investors", "/login", "/signup", "/entpProfile", "/invsProfile","/funding","/fundList", "/transfer", "/entpForm", "/intForm", "/updateInvester","/updateEnterprise"]
+    const userRoutes = ["/home", "/enterprise", "/investors", "/login", "/signup", "/entpProfile/:enterpriseId", "/invsProfile/:investorIdvsProfile","/funding","/fundList", "/transfer", "/entpForm", "/intForm", "/updateInvester","/updateEnterprise"]
 
     if (role === "ADMIN") {
       return;

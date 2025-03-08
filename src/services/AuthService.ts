@@ -87,3 +87,13 @@ export const deleteUser = async (id: string) => {
   return response.data;
 };
 
+
+export function passwordRecovery(userEmail: string) {
+    const response = axios.post(`${API_URL}/sendVerificationCode`, { userEmail });
+    return response;
+}
+
+export function updatePassword(userEmail: string, newPassword: string) {
+  const response = axios.post(`${API_URL}/updatePassword`, null, { params: {userEmail,newPassword,}})
+  return response;
+}

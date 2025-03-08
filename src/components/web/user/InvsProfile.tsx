@@ -5,10 +5,9 @@ import { getInvestorById } from "../../../services/InvesterService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
-import useAuthCheck from "../../../AuthChecking";
 
 const InvsProfile: React.FC = () => {
-  useAuthCheck();
+ 
     const [investor, setInvestor] = useState<InvestorFormData | null>(null);
     const { investorId } = useParams<{ investorId: string }>();
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -115,7 +114,7 @@ const InvsProfile: React.FC = () => {
                 <h3 className="mt-3">{investor.investorName}</h3>
                 <p className="text-muted">{investor.investorJob}</p>
                 <p>{investor.address}</p>
-                <button className="btn btn-info" onClick={() => setIsPopupOpen(true)}>Connect</button>
+                
               </div>
             </div>
           </div>
@@ -149,7 +148,6 @@ const InvsProfile: React.FC = () => {
           <div className="card p-3 border-0">
             <div className="card-body">
               <p><strong>First Name:</strong> {loggedUser.firstName}</p>
-              <p><strong>Last Name:</strong> {loggedUser.lastName}</p>
               <p><strong>User ID:</strong> {loggedUser.userId}</p>
               <p><strong>Email:</strong> {loggedUser.email}</p>
               <p><strong>Investor ID:</strong> {investorId}</p>
