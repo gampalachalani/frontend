@@ -5,10 +5,9 @@ import { getEnterpriseById } from "../../../services/EnterpriceService";
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import axios from "axios";
-import useAuthCheck from "../../../AuthChecking";
+
 
 const EntpProfile: React.FC = () => {
-  useAuthCheck();
   const [enterprise, setEnterprise] = useState<EnterpriseFormData | null>(null);
   const { enterpriseId } = useParams<{ enterpriseId: string }>();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -143,7 +142,6 @@ const EntpProfile: React.FC = () => {
           <div className="card p-3 border-0">
             <div className="card-body">
               <p><strong>First Name:</strong> {loggedUser.firstName}</p>
-              <p><strong>Last Name:</strong> {loggedUser.lastName}</p>
               <p><strong>User ID:</strong> {loggedUser.userId}</p>
               <p><strong>Email:</strong> {loggedUser.email}</p>
               <p><strong>Enterprise ID:</strong> {enterpriseId}</p>

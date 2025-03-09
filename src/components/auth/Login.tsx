@@ -80,7 +80,7 @@ const Login: React.FC = () => {
                 <label>
                   <input type="checkbox" /> Remember me
                 </label>
-                <a href="#">Forgot password</a>
+                <a href="/fpass">Forgot password</a>
               </div>
 
               <a href="/home">
