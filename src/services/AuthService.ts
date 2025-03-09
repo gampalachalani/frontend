@@ -97,3 +97,8 @@ export function updatePassword(userEmail: string, newPassword: string) {
   const response = axios.post(`${API_URL}/updatePassword`, null, { params: {userEmail,newPassword,}})
   return response;
 }
+
+export const getUserByEmail = async (email: string) => {
+  const response = await axios.get(`${API_URL}/getUserByEmail/${email}`);
+  return response.data;
+};

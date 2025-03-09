@@ -83,7 +83,11 @@ const EntpProfile: React.FC = () => {
             <div className="col-lg-7 col-md-10">
               <h1 className="display-2 text-white">{enterprise?.enterpriseName}</h1>
               <p className="text-white mt-0 mb-5">Welcome to the enterprise profile page.</p>
-              <a href={`/updateEnterprise/${enterprise?.enterpriseId}`} className="btn btn-info">Edit Profile</a>
+              {loggedUser.userId === enterprise?.userId ? (
+                <a href={`/updateInvester/${enterprise?.enterpriseId}`} className="btn btn-info">Update Profile</a>
+              ) : (
+                <a href={`/enterprise`} className="btn btn-info">Back to Entreprenurs List</a>
+              )}
             </div>
           </div>
         </div>

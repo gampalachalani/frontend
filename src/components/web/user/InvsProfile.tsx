@@ -72,6 +72,9 @@ const InvsProfile: React.FC = () => {
     return <div className="text-center mt-5">Loading investor details...</div>;
   }
 
+  const logUser = loggedUser.firstName +" "+ loggedUser.lastName;
+  const currentUser = investor.investorName;
+
   return (
     <div className="main-content">
       
@@ -92,7 +95,11 @@ const InvsProfile: React.FC = () => {
             <div className="col-lg-7 col-md-10">
               <h1 className="display-2 text-white">{investor.investorName}</h1>
               <p className="text-white mt-0 mb-5">Welcome to the Investor Profile Page</p>
-              <a href={`/updateInvester/${investor.investmentId}`} className="btn btn-info">Edit Profile</a>
+              {logUser === currentUser ? (
+                <a href={`/updateInvester/${investor.investmentId}`} className="btn btn-info">Update Profile</a>
+              ) : (
+                <a href={`/investors`} className="btn btn-info">Back to Investor List</a>
+              )}
             </div>
           </div>
         </div>
@@ -114,6 +121,7 @@ const InvsProfile: React.FC = () => {
                 <h3 className="mt-3">{investor.investorName}</h3>
                 <p className="text-muted">{investor.investorJob}</p>
                 <p>{investor.address}</p>
+                <button className="btn btn-info" onClick={() => setIsPopupOpen(true)}>Connect</button>
                 
               </div>
             </div>

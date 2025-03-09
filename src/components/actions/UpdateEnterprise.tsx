@@ -1,134 +1,94 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getEnterpriseById, updateEnterprise } from "../../services/EnterpriceService"
-import "../styles/Entreform.css";
+import axios from "axios";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import cmplogo from "../assets/logo1.png";
+import "../styles/Invesform.css";
 
-const UpdateEnterpriseForm: React.FC = () => {
-  const { enterpriseId } = useParams<{ enterpriseId: string }>();
+const UpdateEnterprise: React.FC = () => {
   const navigate = useNavigate();
-
+  const { investorId } = useParams<{ investorId: string }>();
+  
   const [formData, setFormData] = useState({
-    enterpriseId: "",
-    enterpriseName: "",
-    enterpriseEmail: "",
-    registerNumber: "",
-    enterpriseType: "",
-    startingDate: "",
+    investorName: "",
+    investorJob: "",
+    investorInterest: "",
+    otherDetails: "",
+    budgetLimit: "",
     address: "",
-    city: "",
     telNumber: "",
-    webUrl: "",
     imageFile: null as File | null,
   });
 
   useEffect(() => {
-    if (enterpriseId) {
-      const fetchEnterprise = async () => {
-        const data = await getEnterpriseById(enterpriseId);
-        if (data) {
-          setFormData({
-            enterpriseId: data.enterpriseId || "",
-            enterpriseName: data.enterpriseName || "",
-            enterpriseEmail: data.enterpriseEmail || "",
-            registerNumber: data.registerNumber || "",
-            enterpriseType: data.enterpriseType || "",
-            startingDate: data.startingDate || "",
-            address: data.address || "",
-            city: data.city || "",
-            telNumber: data.telNumber || "",
-            webUrl: data.webUrl || "",
-            imageFile: null, 
-          });
+    const fetchInvestor = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/enterprise/getInvestmentByInvestmentId/${investorId}`);
+        if (response.data) {
+          setFormData(response.data);
         }
-      };
-      fetchEnterprise();
-    }
-  }, [enterpriseId]);
+      } catch (error) {
+        console.error("Error fetching investor details", error);
+      }
+    };
+    fetchInvestor();
+  }, [investorId]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({ ...prev, imageFile: e.target.files![0] }));
-    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const updatedEnterprise = { ...formData };
-
-    const result = await updateEnterprise(enterpriseId!, updatedEnterprise);
-    if (result) {
-      alert("Enterprise updated successfully!");
-      navigate("/enterprise");
+    try {
+      await axios.put(`http://localhost:8080/api/investment/updateInvestment/${investorId}`, formData);
+      navigate("/investors"); // Redirect after update
+    } catch (error) {
+      console.error("Error updating investor details", error);
     }
   };
 
   return (
     <>
       <Header />
-      <div className="entreform">
-        <div className="entreform-container">
-
+      <div className="invesform">
+        <div className="invesform-container">
           <div className="cmp-logo">
             <img src={cmplogo} alt="Company Logo" />
           </div>
-
-          <div className="entreform-box">
+          <div className="invesform-box">
             <form onSubmit={handleSubmit}>
-              <h1>Update Enterprise</h1>
-
+              <h1>Update Investor</h1>
               <div className="mb-3">
-                <label className="form-label">Enterprise Name</label>
-                <input type="text" className="form-control" name="enterpriseName" value={formData.enterpriseName} onChange={handleChange} required />
+                <label className="form-label">Investor Name</label>
+                <input type="text" className="form-control" name="investorName" value={formData.investorName} onChange={handleChange} required />
               </div>
-
               <div className="mb-3">
-                <label className="form-label">Enterprise Email</label>
-                <input type="email" className="form-control" name="enterpriseEmail" value={formData.enterpriseEmail} onChange={handleChange} required />
+                <label className="form-label">Investor Job</label>
+                <input type="text" className="form-control" name="investorJob" value={formData.investorJob} onChange={handleChange} required />
               </div>
-
               <div className="mb-3">
-                <label className="form-label">Register Number</label>
-                <input type="text" className="form-control" name="registerNumber" value={formData.registerNumber} onChange={handleChange} required />
+                <label className="form-label">Investor Interest</label>
+                <input className="form-control" name="investorInterest" value={formData.investorInterest} onChange={handleChange} required />
               </div>
-
               <div className="mb-3">
-                <label className="form-label">Enterprise Type</label>
-                <input type="text" className="form-control" name="enterpriseType" value={formData.enterpriseType} onChange={handleChange} required />
+                <label className="form-label">Other Details</label>
+                <input className="form-control" name="otherDetails" value={formData.otherDetails} onChange={handleChange} />
               </div>
-
               <div className="mb-3">
-                <label className="form-label">Starting Date</label>
-                <input type="date" className="form-control" name="startingDate" value={formData.startingDate} onChange={handleChange} required />
+                <label className="form-label">Budget Limit</label>
+                <input type="text" className="form-control" name="budgetLimit" value={formData.budgetLimit} onChange={handleChange} required />
               </div>
-
               <div className="mb-3">
                 <label className="form-label">Address</label>
-                <input type="text" className="form-control" name="address" value={formData.address} onChange={handleChange} required />
+                <input className="form-control" name="address" value={formData.address} onChange={handleChange} required />
               </div>
-
-              <div className="mb-3">
-                <label className="form-label">City</label>
-                <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} required />
-              </div>
-
               <div className="mb-3">
                 <label className="form-label">Telephone Number</label>
                 <input type="text" className="form-control" name="telNumber" value={formData.telNumber} onChange={handleChange} required />
               </div>
-
-              <div className="mb-3">
-                <label className="form-label">Website URL</label>
-                <input type="text" className="form-control" name="webUrl" value={formData.webUrl} onChange={handleChange} />
-              </div>
-
               <div className="text-center">
                 <button type="submit" className="btn btn-primary w-100">Update</button>
               </div>
@@ -141,4 +101,4 @@ const UpdateEnterpriseForm: React.FC = () => {
   );
 };
 
-export default UpdateEnterpriseForm;
+export default UpdateEnterprise;

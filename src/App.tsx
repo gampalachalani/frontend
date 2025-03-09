@@ -22,8 +22,8 @@ import EntpProfileEdit from "./components/web/user/EntpProfileEdit";
 import InvsProfileEdit from "./components/web/user/InvsProfileEdit";
 import AboutUs from "./components/web/AboutUs";
 import TermsAndConditions from "./components/web/TermsAndConditions";
-import ForgotPassword from "./components/auth/forgotpassword";
 import UpdatePassword from "./components/auth/UpdatePassword";
+import ForgotPassword from "./components/auth/ForgotPassword";
 
 const App: React.FC = () => {
   return (

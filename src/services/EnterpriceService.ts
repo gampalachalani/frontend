@@ -108,12 +108,8 @@ export const getEnterpriseByUserId = async () => {
 
 
 export const getEntpBYUserId = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/getEnterpriseByUserId/${sessionStorage.getItem("userId")}`);
-    
-    return response.data?.enterpriseId || null; // Return only enterpriseId, or null if not found
-  } catch (error) {
-    console.error("Error fetching enterprise data:", error);
-    return null; // Return null in case of an error
-  }
+  const userId = sessionStorage.getItem("userId");
+  const response = await axios.get(`${API_URL}/getEnterpriseByUserId/${userId}`);
+  console.log(response.data);
+  return response.data;
 };
