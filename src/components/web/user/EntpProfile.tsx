@@ -18,21 +18,42 @@ const EntpProfile: React.FC = () => {
     email: ""
   });
 
-  const handleCancel = async () => {
+  const handleSendEmail = async () => {
+    // Retrieve sender email from session storage
+    const senderEmail = sessionStorage.getItem("userEmail"); 
+  
+    if (!enterprise?.enterpriseEmail || !senderEmail) {
+      alert("Missing sender or recipient email.");
+      return;
+    }
+  
+    // Prepare the email content
     const emailRequest = {
-      to: enterprise?.enterpriseEmail,
-      subject: "Cancellation Notification",
-      body: `Dear ${enterprise?.enterpriseName},\n\nUser ${loggedUser.firstName} ${loggedUser.lastName} (ID: ${loggedUser.userId}) has canceled the connection request.\n\nRegards,\nYour Platform`,
+      recipient: enterprise.enterpriseEmail,  // Receiver's email
+      sender: senderEmail,                    // Sender's email
+      subject: "Enterprise Connection Request", // Email subject
+      content: `
+        <div>
+          <p><strong>First Name:</strong> ${loggedUser.firstName}</p>
+          <p><strong>User ID:</strong> ${loggedUser.userId}</p>
+          <p><strong>Email:</strong> ${loggedUser.email}</p>
+          <p><strong>Enterprise ID:</strong> ${enterpriseId}</p>
+        </div>
+      `,
     };
   
+    // Retrieve the token from session storage
+    const token = sessionStorage.getItem("token"); 
+  
     try {
-      const response = await axios.post("http://localhost:8080/api/email/email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(emailRequest),
+      const response = await axios.post("http://localhost:8080/api/email/email", emailRequest, {
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include Bearer token
+        },
       });
   
-      if (response) {
+      if (response.status === 200) {
         alert("Email sent successfully.");
         setIsPopupOpen(false);
       } else {
@@ -43,6 +64,9 @@ const EntpProfile: React.FC = () => {
       alert("An error occurred.");
     }
   };
+  
+  
+  
 
   useEffect(() => {
     const fetchEnterprise = async () => {
@@ -83,7 +107,13 @@ const EntpProfile: React.FC = () => {
             <div className="col-lg-7 col-md-10">
               <h1 className="display-2 text-white">{enterprise?.enterpriseName}</h1>
               <p className="text-white mt-0 mb-5">Welcome to the enterprise profile page.</p>
-              <a href={`/updateEnterprise/${enterprise?.enterpriseId}`} className="btn btn-info">Edit Profile</a>
+              {loggedUser.userId === enterprise?.userId ? (
+                <a href={`/updateInvester/${enterprise?.enterpriseId}`} className="btn btn-info">Update Profile</a>
+                
+              ) : (
+                <a href={`/enterprise`} className="btn btn-info">Back to Entreprenurs List</a>
+                
+              )}
             </div>
           </div>
         </div>
@@ -169,7 +199,7 @@ const EntpProfile: React.FC = () => {
           fontWeight: "bold",
           width: "100px",
         }}
-        onClick={handleCancel}
+        onClick={handleSendEmail}
       >
         Connect
       </button>
