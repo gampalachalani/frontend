@@ -58,7 +58,7 @@ const ForgotPassword: React.FC = () => {
                     <div className="col-md-6">
                         <div className="card shadow">
                             {!isCodeSent ? (
-                                <div className="card-header text-center text-white" style={{backgroundColor:"#f82249"}}>
+                                <div className="card-header text-center text-white" style={{backgroundColor:"#2962FF"}}>
                                 <h4 className='my-3 text-white'>Password Recovery</h4>
                                 <p className="mb-0">Follow the steps to recover your account</p>
                             </div>
@@ -83,7 +83,7 @@ const ForgotPassword: React.FC = () => {
                                             />
                                         </div>
                                         <button
-                                            style={{backgroundColor:"#f82249"}}
+                                            style={{backgroundColor:"#2962FF49"}}
                                             className="btn w-100 text-white"
                                             onClick={handleSendEmail}
                                         >
