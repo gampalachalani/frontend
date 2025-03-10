@@ -21,7 +21,7 @@ const Signup: React.FC = () => {
       const response = await register({ userEmail, firstName, lastName, password });
       sessionStorage.setItem('userId', response);
       console.log(response);
-      if(response){
+      if(response !== "Registered"){
         navigate('/home');
       }
     } catch (err) {
